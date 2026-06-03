@@ -331,6 +331,34 @@ footer a:hover{color:var(--gold-2)}
 .hero h1.lite{font-size:clamp(1.5rem,3.1vw,2.3rem);font-weight:400;color:var(--fg)}
 .hero h1.lite .em{color:var(--bronze)}
 .hero h1.lite .sub2{font-size:.62em;margin-top:10px;color:var(--fg-soft)} 
+/* ===== Why Attend ===== */
+.wa{padding:84px 0;background:var(--bg-2);border-block:1px solid var(--line)}
+.wa-eyebrow{font-family:"Archivo",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:var(--bronze)}
+.wa-title{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin:14px 0 18px;letter-spacing:-.01em}
+.wa-head p{color:var(--fg-soft);font-size:1.08rem;margin-bottom:14px;max-width:820px}
+.wa-quote{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.35;border-left:5px solid var(--gold);padding:8px 0 8px 26px;margin:30px 0 8px;max-width:900px}
+.wa-sub{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(1.4rem,3vw,2rem);margin:56px 0 22px;letter-spacing:-.01em}
+.wa-lead{color:var(--fg-soft);font-size:1.05rem;margin:0 0 22px;max-width:820px}
+.wa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.wa-card{position:relative;background:var(--card);border:1px solid var(--card-line);border-radius:8px;padding:28px 26px;transition:transform .3s,box-shadow .3s}
+.wa-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:8px 8px 0 0;background:linear-gradient(90deg,var(--gold),var(--bronze))}
+.wa-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px -28px rgba(42,23,13,.45)}
+.wa-num{font-family:"Fraunces";font-size:1.6rem;font-weight:300;color:var(--bronze);opacity:.6}
+.wa-card h4{font-family:"Fraunces";font-weight:600;font-size:1.18rem;margin:6px 0 10px;line-height:1.2}
+.wa-card p{color:var(--fg-soft);font-size:.94rem;line-height:1.55}
+.wa-who{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 36px}
+.wa-who-item{padding:18px 0;border-top:1px solid var(--line)}
+.wa-who-item b{font-family:"Fraunces";font-weight:600;font-size:1.05rem;display:block;margin-bottom:4px}
+.wa-who-item span{color:var(--fg-soft);font-size:.94rem}
+.wa-value{margin-top:46px;border-radius:10px;padding:40px;color:var(--cream);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--brown),#1a0e06)}
+.wa-value::before{content:"";position:absolute;inset:0;opacity:.4;background:radial-gradient(520px 260px at 85% 0,rgba(227,199,117,.25),transparent 60%),radial-gradient(440px 220px at 5% 120%,rgba(157,101,54,.4),transparent 55%)}
+.wa-value>*{position:relative;z-index:1}
+.wa-value h3{font-family:"Fraunces";font-weight:500;color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);margin:8px 0 10px}
+.wa-value p{color:rgba(243,232,213,.82)}
+.wa-value-list{list-style:none;margin:18px 0;padding:0;display:grid;gap:12px}
+.wa-value-list li{padding:14px 18px;border:1px solid rgba(227,199,117,.28);border-radius:6px;background:rgba(255,255,255,.04);font-size:1rem}
+.wa-value-list li b{color:var(--gold-2);font-family:"Fraunces";font-weight:600}
+.wa-value-foot{margin-top:20px;font-size:1.02rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -482,6 +510,52 @@ footer a:hover{color:var(--gold-2)}
       <div class="ccard reveal"><div class="pad"><div class="no">◆</div><h3>International Convergence</h3><p>Scholars, consultants, policymakers and diaspora from Africa, the Caribbean, the Americas and Europe — 40–50 participants in one container.</p></div></div>
     </div>
   </div>
+
+  <!-- WHY ATTEND -->
+<section class="wa" id="why-attend">
+  <div class="wrap">
+    <div class="wa-head">
+      <span class="wa-eyebrow">Why Attend</span>
+      <h2 class="wa-title">Why attend this conference</h2>
+      <p>Accra, Ghana is not just a location; it is a crossroads of memory. Here, the past is not behind us — it breathes through our institutions, our leadership and our collective anxieties.</p>
+      <p>This conference invites you into a high‑containment space where the unfinished business of history is explored as a living force shaping authority, identity and organisational life today. We gather to examine how the legacies of colonialism, displacement and systemic trauma continue to influence contemporary leadership and the dynamics of groups and institutions.</p>
+    </div>
+    <blockquote class="wa-quote">If you cannot see what your organisation is unconsciously repeating from its past, you cannot consciously lead it into its future.</blockquote>
+
+    <h3 class="wa-sub">What you will gain</h3>
+    <div class="wa-grid">
+      <div class="wa-card"><span class="wa-num">01</span><h4>Advanced Systemic Diagnostic Skills</h4><p>Detect the hidden dynamics — denial, splitting, projection, repetition — that block transformation in organisations carrying historical or structural trauma. These insights go far beyond standard leadership or consulting frameworks.</p></div>
+      <div class="wa-card"><span class="wa-num">02</span><h4>A Practical Framework for Institutional Reparations</h4><p>Move beyond symbolic gestures to a grounded, psychological approach to reparations in practice — enabling you to lead authentic healing work within systems seeking equity and reconciliation.</p></div>
+      <div class="wa-card"><span class="wa-num">03</span><h4>Deeper Authority &amp; Readership Intelligence</h4><p>Authority is not simply a title; it is conferred by the group. Explore how African traditional leadership models and Western organisational structures intersect, and how historical injustice shapes the ways groups authorise — or resist — leadership today.</p></div>
+      <div class="wa-card"><span class="wa-num">04</span><h4>A Global, Cross‑Sector Network</h4><p>Mingle, deliberate and build lasting partnerships with practitioners, scholars, executives, traditional leaders and change agents from West Africa, Europe, the Americas, the Caribbean and Asia. This is an incubator for a global movement, not just a conference.</p></div>
+      <div class="wa-card"><span class="wa-num">05</span><h4>A Living, Experiential Laboratory</h4><p>Across seven days — academic provocations, historic site visits and a full Group Relations Conference — you will analyse authority and leadership in real time, learning not only from theory but from your own experience in the system.</p></div>
+    </div>
+
+    <h3 class="wa-sub">Who this conference is for</h3>
+    <p class="wa-lead">An immersive, multi‑layered event designed for professionals working at the boundaries of systemic change:</p>
+    <div class="wa-who">
+      <div class="wa-who-item"><b>Executive Coaches &amp; Consultants</b><span>Seeking deeper diagnostic tools for organisations in transition or carrying historical trauma.</span></div>
+      <div class="wa-who-item"><b>Corporate Leaders &amp; HR Executives</b><span>Leading cultural transformation, equity and inclusion work that must go beyond surface‑level initiatives.</span></div>
+      <div class="wa-who-item"><b>NGO, Social Care &amp; Healthcare Leaders</b><span>Navigating societal anxieties, community trauma and the emotional demands of institutional advocacy.</span></div>
+      <div class="wa-who-item"><b>Academics, Historians &amp; Policymakers</b><span>Applying historical and reparations research to contemporary leadership and group dynamics.</span></div>
+      <div class="wa-who-item"><b>Traditional Leaders &amp; Community Elders</b><span>Engaging with questions of authority, identity and intergenerational healing.</span></div>
+      <div class="wa-who-item"><b>Faith Leaders &amp; Spiritual Practitioners</b><span>Holding communal authority at the intersection of healing, identity and collective memory.</span></div>
+    </div>
+    <p class="wa-lead">If your work touches systems, history, identity or transformation, this conference is built for you.</p>
+
+    <div class="wa-value">
+      <span class="wa-eyebrow" style="color:var(--gold-2)">Is it value for money?</span>
+      <h3>Yes — exceptionally so.</h3>
+      <p>This conference integrates three high‑impact programmes in one:</p>
+      <ul class="wa-value-list">
+        <li><b>A world‑class international academic symposium</b></li>
+        <li><b>A historically grounded reflective journey</b> to Cape Coast &amp; Elmina</li>
+        <li><b>A full three‑day Group Relations Conference</b> — an intervention that alone often costs more than this entire event</li>
+      </ul>
+      <p class="wa-value-foot">Participants leave with diagnostic tools, leadership insights and systemic understanding that directly enhance their professional practice, organisational impact and personal leadership capacity. You are not paying for information — you are investing in a transformation of how you see systems, history, authority and yourself as a leader.</p>
+    </div>
+  </div>
+</section>
 </section>
 
 <section id="speakers">
