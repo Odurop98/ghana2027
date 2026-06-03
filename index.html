@@ -318,6 +318,19 @@ footer a:hover{color:var(--gold-2)}
 .venue-band h3{font-family:"Fraunces";font-size:clamp(1.4rem,2.6vw,2rem);color:var(--cream);margin:8px 0 4px;font-weight:500}
 .venue-band p{font-family:"Archivo";font-size:.9rem;color:rgba(243,232,213,.82);letter-spacing:.04em}
 @media(max-width:980px){.why4{grid-template-columns:1fr}}
+ /* ===== Hero focal key-info ===== */
+.hero-keyinfo{display:inline-flex;flex-direction:column;gap:7px;padding:20px 28px;border-radius:10px;margin-bottom:20px;
+  background:linear-gradient(135deg,rgba(198,161,75,.22),rgba(157,101,54,.10));
+  border:1px solid var(--gold);border-left:6px solid var(--gold);box-shadow:0 18px 42px -20px rgba(157,101,54,.6)}
+.ki-date{font-family:"Fraunces";font-weight:600;font-size:clamp(2.1rem,4.8vw,3.2rem);line-height:1;letter-spacing:-.01em;color:var(--ink)}
+[data-theme="dark"] .ki-date{color:var(--gold-2)}
+.ki-sub{font-family:"Archivo";font-weight:700;font-size:clamp(.82rem,1.7vw,1.04rem);letter-spacing:.05em;color:var(--bronze);text-transform:uppercase}
+.chips.big{margin:0 0 28px}
+.chips.big .chip{font-size:.76rem;padding:9px 16px;font-weight:700;border-color:var(--bronze);color:var(--fg)}
+.chips.big .chip:first-child{background:var(--gold);border-color:var(--gold);color:#231304}
+.hero h1.lite{font-size:clamp(1.5rem,3.1vw,2.3rem);font-weight:400;color:var(--fg)}
+.hero h1.lite .em{color:var(--bronze)}
+.hero h1.lite .sub2{font-size:.62em;margin-top:10px;color:var(--fg-soft)} 
 </style>
 </head>
 <body>
@@ -363,13 +376,17 @@ footer a:hover{color:var(--gold-2)}
         <span class="chip">Leadership</span><span class="chip">Authority</span>
         <span class="chip">Africa &amp; Diaspora Dialogue</span>
       </div>
+      <div class="hero-keyinfo">
+        <span class="ki-date">21–28 February 2027</span>
+        <span class="ki-sub">International Conference · KAIPTC, Accra, Ghana</span>
+      </div>
+      <div class="chips big">
+        <span class="chip">Reparations</span><span class="chip">Historical Memory</span>
+        <span class="chip">Leadership</span><span class="chip">Authority</span>
+        <span class="chip">Africa &amp; Diaspora Dialogue</span>
+      </div>
       <h1 class="lite">The Past Alive <span class="em">in the Present</span>
         <span class="sub2">Authority, Leadership and the Future We Create</span></h1>
-      <div class="hero-cta">
-        <a class="btn btn-gold" href="#register">Register Now</a>
-        <a class="btn btn-dark" href="#papers">Submit Abstract</a>
-        <a class="btn btn-ghost" href="#bursary">Apply for Bursary</a>
-      </div>
     </div>
     <div class="hero-figure reveal">
       <span class="badge">21–28<br>FEB 2027</span>
