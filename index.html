@@ -283,11 +283,13 @@ footer a:hover{color:var(--gold-2)}
 .why4 .ccard .no{font-size:1.4rem;opacity:.6}
 .why4 .ccard h3{font-size:1.18rem;margin-top:6px}
 .why4 .ccard .pad p{color:var(--fg-soft);font-size:.93rem;margin-top:10px;line-height:1.55}
-.consultants{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 30px;margin:26px 0 0}
-.cons{display:flex;align-items:center;background:none;border:none;border-radius:0;padding:0}
-.cons .av{display:none}
-.cons b{font-family:"Fraunces";font-weight:500;font-size:1.2rem;letter-spacing:-.01em;color:var(--fg)}
-.team-sub{font-family:"Archivo";text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--bronze);font-weight:700;text-align:center;margin:48px 0 6px}
+.consultants{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:26px}
+.cons{background:var(--card);border:1px solid var(--card-line);border-radius:8px;overflow:hidden;text-align:center;transition:transform .3s,box-shadow .3s}
+.cons:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.cpic{aspect-ratio:4/5;display:grid;place-items:center;background:linear-gradient(150deg,var(--brown),var(--bronze))}
+.cpic svg{width:48px;height:48px;opacity:.7}
+.cname{font-family:"Fraunces";font-weight:600;font-size:1.1rem;margin:14px 12px 3px;color:var(--fg)}
+.cnote{font-family:"Archivo";font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-soft);margin:0 12px 16px}
 /* ===== Call for Papers ===== */
 .streams{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .stream{background:var(--card);border:1px solid var(--card-line);border-radius:8px;padding:30px;position:relative;overflow:hidden}
@@ -679,17 +681,18 @@ footer a:hover{color:var(--gold-2)}
         <p> </p></div></div>
     </div>
     <div class="team-sub">Consultants</div>
-    <div class="consultants">
-  <div class="cons reveal"><span class="av">RB</span><b>Ray Bakaitis</b></div>
-  <div class="cons reveal"><span class="av">LB</span><b>Leslie Brissett</b></div>
-  <div class="cons reveal"><span class="av">RE</span><b>Rebecca Ellison</b></div>
-  <div class="cons reveal"><span class="av">EE</span><b>Ewuadua Ewusie</b></div>
-  <div class="cons reveal"><span class="av">MF</span><b>Mary Fullerton</b></div>
-  <div class="cons reveal"><span class="av">OK</span><b>Olya Khaleelee</b></div>
-  <div class="cons reveal"><span class="av">MM</span><b>Michelle May</b></div>
-  <div class="cons reveal"><span class="av">VP</span><b>Veena Pinto</b></div>
-  <div class="cons reveal"><span class="av">CR</span><b>Carlos Remotti-Breton</b></div>
-  <div class="cons reveal"><span class="av">LW</span><b>Leo Wilton</b></div>
+  <div class="consultants">
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Ray Bakaitis</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Leslie Brissett</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Rebecca Ellison</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Ewuadua Ewusie</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Mary Fullerton</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Olya Khaleelee</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Michelle May</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Veena Pinto</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Carlos Remotti-Breton</div><div class="cnote">Photo &amp; bio to be added</div></div>
+  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Leo Wilton</div><div class="cnote">Photo &amp; bio to be added</div></div>
+</div>
 </div>
   </div>
 </section>
