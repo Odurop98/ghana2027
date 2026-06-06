@@ -366,19 +366,27 @@ footer a:hover{color:var(--gold-2)}
 
 /* ===== Director's Welcome ===== */
 .wd{padding:84px 0}
-.wd-head{max-width:820px;margin:0 auto 36px;text-align:center}
-.wd-eyebrow{font-family:"Archivo",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:var(--bronze)}
-.wd-title{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.08;margin-top:14px;letter-spacing:-.01em}
-.wd-letter{max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--card-line);border-radius:12px;border-top:5px solid var(--gold);padding:48px clamp(24px,5vw,60px);box-shadow:0 30px 70px -34px rgba(42,23,13,.5)}
+.wd-grid{display:grid;grid-template-columns:310px 1fr;gap:46px;align-items:start;max-width:1100px;margin:0 auto}
+.wd-card{position:sticky;top:90px;background:var(--card);border:1px solid var(--card-line);border-radius:14px;overflow:hidden;box-shadow:0 30px 70px -34px rgba(42,23,13,.5)}
+.wd-photo{position:relative;aspect-ratio:1/1;overflow:hidden;border-bottom:4px solid var(--gold)}
+.wd-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.wd-card-body{padding:22px 24px 26px;text-align:center}
+.wd-greet{display:inline-block;font-family:"Archivo",sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#231304;background:linear-gradient(135deg,var(--gold),var(--bronze));padding:6px 14px;border-radius:40px;margin-bottom:14px}
+.wd-cn{font-family:"Fraunces",serif;font-weight:600;font-size:1.3rem;line-height:1.15;color:var(--fg)}
+.wd-cr{display:block;font-family:"Archivo";font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--bronze);font-weight:700;margin-top:6px}
+.wd-cloc{display:block;font-family:"Spectral";font-size:.86rem;color:var(--fg-soft);margin-top:8px}
+.wd-letter{max-width:none}
+.wd-eyebrow{font-family:"Archivo",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:var(--bronze)}
+.wd-title{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(2rem,4vw,2.9rem);line-height:1.06;margin:12px 0 22px;letter-spacing:-.01em}
 .wd-letter p{color:var(--fg-soft);font-size:1.06rem;line-height:1.7;margin-bottom:18px}
 .wd-letter p b{color:var(--fg);font-weight:600}
 .wd-letter p.wd-salutation{font-family:"Fraunces";font-style:italic;font-size:1.3rem;color:var(--fg);margin-bottom:22px}
 .wd-letter p.wd-emph{font-family:"Fraunces";font-style:italic;font-size:1.2rem;color:var(--bronze)}
-.wd-quote{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.4;color:var(--fg);border-left:4px solid var(--gold);padding:6px 0 6px 24px;margin:24px 0}
-.wd-sign{display:flex;align-items:center;gap:16px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
-.wd-av{width:54px;height:54px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-family:"Fraunces";font-weight:600;font-size:1.2rem;color:#231304;background:linear-gradient(135deg,var(--gold),var(--bronze))}
+.wd-quote{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.4;color:var(--fg);border-left:4px solid var(--gold);padding:6px 0 6px 24px;margin:24px 0}
+.wd-sign{display:flex;align-items:center;gap:14px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
 .wd-name{font-family:"Fraunces";font-weight:600;font-size:1.2rem;display:block}
 .wd-role{font-family:"Archivo";font-size:.82rem;letter-spacing:.04em;color:var(--bronze);display:block;margin-top:2px}
+@media(max-width:860px){.wd-grid{grid-template-columns:1fr}.wd-card{position:static;max-width:340px;margin:0 auto}}
 
 /* ===== Registration Fees ===== */
 .fee{padding:84px 0;background:var(--bg-2);border-block:1px solid var(--line)}
@@ -503,14 +511,22 @@ footer a:hover{color:var(--gold-2)}
     </div>
   </div>
 
-  <!-- DIRECTOR'S WELCOME -->
+<!-- DIRECTOR'S WELCOME -->
 <section class="wd" id="welcome">
-  <div class="wrap">
-    <div class="wd-head">
-      <span class="wd-eyebrow">Welcome</span>
-      <h2 class="wd-title">A welcome from the Conference Director</h2>
-    </div>
+  <div class="wrap wd-grid">
+    <aside class="wd-card">
+      <div class="wd-photo"><img src="augustine-sagoe.jpg" alt="Augustine Paapa Sagoe, Conference Director"></div>
+      <div class="wd-card-body">
+        <span class="wd-greet">Akwaaba · Welcome</span>
+        <h3 class="wd-cn">Augustine Paapa Sagoe</h3>
+        <span class="wd-cr">Conference Director</span>
+        <span class="wd-cloc">International Group Relations Conference · Accra, Ghana</span>
+      </div>
+    </aside>
+
     <div class="wd-letter">
+      <span class="wd-eyebrow">A Welcome from the Conference Director</span>
+      <h2 class="wd-title">You are warmly invited to Ghana.</h2>
       <p class="wd-salutation">Dear Colleagues,</p>
       <p>It is my pleasure to invite you to join us in Ghana for the <b>International Group Relations Conference 2027 — The Past Alive in the Present: Authority, Leadership, and the Future We Create.</b></p>
       <p>We are living through a period of profound uncertainty and transformation. Across the world, institutions are facing unprecedented challenges. Communities are grappling with questions of identity and belonging. Organisations are struggling to respond to increasing complexity, social division and rapid change. At the same time, long‑suppressed conversations about history, injustice, memory, reparations and collective responsibility are demanding our attention.</p>
@@ -524,9 +540,7 @@ footer a:hover{color:var(--gold-2)}
       <p>Whether you are an executive, consultant, academic, policymaker, community leader, practitioner or student of organisational life, I believe this conference offers a unique opportunity for learning and growth.</p>
       <p>I warmly invite you to join us in Ghana as we explore together the enduring relationship between the past, the present and the future we seek to create. I look forward to welcoming you.</p>
       <div class="wd-sign">
-        <span class="wd-av">AS</span>
-        <div><span class="wd-name">Augustine Sagoe</span>
-          <span class="wd-role">Conference Director · International Group Relations Conference, Ghana 2027</span></div>
+        <div><span class="wd-name">Augustine Sagoe</span><span class="wd-role">Conference Director · International Group Relations Conference, Ghana 2027</span></div>
       </div>
     </div>
   </div>
