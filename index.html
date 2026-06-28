@@ -877,12 +877,44 @@ document.querySelector('.bio-toggle').addEventListener('click', function () {
 </div>
 
     
-    <div class="scard reveal">   
-      <div class="portrait">
-          <img src="CherylGrills.jpg" alt="Dr. Cheryl Grills" />
+  <div class="scard reveal">   
+  <div class="portrait">
+    <img src="CherylGrills.jpg" alt="Dr. Cheryl Grills" />
+  </div>
+  <div class="body">
+    <span class="role">Keynote</span>
+    <h3>Dr. Cheryl Grills</h3>
+    <div class="aff">California Reparations Task Force · National African American Reparation Commission</div>
+    <p>On trauma, healing and institutional responsibility in the work of reparations and community repair.</p>
+    <button class="bio-btn" onclick="document.getElementById('bio-cg').classList.add('open')">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<!-- Bio Modal -->
+<div class="bio-overlay" id="bio-cg" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bio-modal">
+    <button class="bio-close" onclick="document.getElementById('bio-cg').classList.remove('open')">&times;</button>
+    <div class="bio-header">
+      <img src="CherylGrills.jpg" alt="Dr. Cheryl Grills" class="bio-portrait" />
+      <div>
+        <h3>Dr. Cheryl Grills</h3>
+        <span class="bio-role">Keynote Speaker</span>
+        <div class="bio-aff">California Reparations Task Force · National African American Reparation Commission</div>
       </div>
-        <div class="body"><span class="role">Keynote</span><h3>Dr. Cheryl Grills</h3><div class="aff">California Reparations Task Force · National African American Reparation Commission</div>
-        <p>On trauma, healing and institutional responsibility in the work of reparations and community repair.</p></div></div>
+    </div>
+    <div class="bio-body">
+      <p>Dr. Cheryl Grills is a Professor of Psychology at Loyola Marymount University and a founding member of the California Reparations Task Force. She also serves on the National African American Reparations Commission (NAARC).</p>
+      <p>A clinician, researcher, and community activist, Dr. Grills has spent decades working at the intersection of African psychology, community healing, and social justice. Her work focuses on the psychological dimensions of racial trauma and the role of healing in reparative justice.</p>
+      <p>She has been a leading voice in framing reparations not only as an economic and political matter but as a deep process of community repair, restoration of dignity, and institutional accountability.</p>
+      <div class="bio-fellowships">
+        <strong>Areas of Focus</strong>
+        <p>African psychology, racial trauma and healing, community-based participatory research, reparative justice, and mental health equity.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
       
        <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">SN</span><span class="note">Official portrait to be added</span></div>
