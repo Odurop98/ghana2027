@@ -428,7 +428,15 @@ footer a:hover{color:var(--gold-2)}
 .fee-aid-card h4{font-family:"Fraunces";font-weight:600;font-size:1.2rem;margin-bottom:8px}
 .fee-aid-card p{color:var(--fg-soft);font-size:.96rem;line-height:1.6}
 .fee-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
-
+<script>
+  document.querySelector('.bio-toggle').addEventListener('click', function () {
+    const bio = document.getElementById('aq-bio');
+    const isOpen = !bio.hidden;
+    bio.hidden = isOpen;
+    this.setAttribute('aria-expanded', String(!isOpen));
+    this.textContent = isOpen ? 'View bio' : 'Close bio';
+  });
+</script>
 </head>
 <body>
 
