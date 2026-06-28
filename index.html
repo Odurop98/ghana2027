@@ -139,7 +139,13 @@ section{padding:84px 0;position:relative}
 .spk{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .scard{background:var(--card);border:1px solid var(--card-line);border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .scard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.portrait{width: 300%;height:auto;position:relative;display:grid;place-items:center;background:linear-gradient(150deg,var(--brown),var(--bronze));overflow:hidden}
+.portrait {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--brown), var(--bronze));
+}
 .portrait .mono{font-family:"Fraunces";font-size:3.4rem;font-weight:300;color:rgba(246,236,216,.92);z-index:1}
 .portrait .ring{position:absolute;width:150px;height:150px;border:1px solid rgba(227,199,117,.55);border-radius:50%}
 .portrait .ring.r2{width:186px;height:186px;border-style:dashed;opacity:.5}
@@ -429,9 +435,10 @@ footer a:hover{color:var(--gold-2)}
 .fee-aid-card p{color:var(--fg-soft);font-size:.96rem;line-height:1.6}
 .fee-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
 
-  .portrait img {
+.portrait img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 }
