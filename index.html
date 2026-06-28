@@ -429,6 +429,21 @@ footer a:hover{color:var(--gold-2)}
 .fee-aid-card p{color:var(--fg-soft);font-size:.96rem;line-height:1.6}
 .fee-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
 </style>
+  <script>
+  document.querySelector('.bio-toggle').addEventListener('click', function () {
+    const bio = document.getElementById('aq-bio');
+    const isOpen = !bio.hidden;
+    bio.hidden = isOpen;
+    this.setAttribute('aria-expanded', String(!isOpen));
+    this.textContent = isOpen ? 'View bio' : 'Close bio';
+  });
+</script>
+Two things to update before dropping this in:
+
+Image path — replace YOUR_IMAGE_PATH/Ato_Quayson_portrait.jpg with the actual hosted URL of his portrait.
+Existing .portrait styles — if your current CSS sets overflow: hidden and a fixed size on .portrait, the <img> will slot straight in. If it used position: absolute for the .mono initials placeholder, you may want to remove that rule or the <img> could need position: relative added.
+
+The .ring, .ring.r2, .bio-drawer, and .bio-toggle styles are assumed to already exist or can be added to match your site's design system.
 </head>
 <body>
 
@@ -689,9 +704,27 @@ footer a:hover{color:var(--gold-2)}
       <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">NK</span><span class="note">Official portrait to be added</span></div>
         <div class="body"><span class="role">Guest of Honour</span><h3>Nana Kobina Nketsiah V</h3><div class="aff">Traditional Chief of Essikado · Ghana</div>
         <p>Custodian of historical memory and traditional leadership, opening the conference with a reflection on authority, lineage and the living past.</p></div></div>
-      <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">AQ</span><span class="note">Official portrait to be added</span></div>
-        <div class="body"><span class="role">Keynote</span><h3>Prof. Ato Quayson</h3><div class="aff">Stanford University</div>
-        <p>On the question of reparations; Pain points,Principles  ,and Pitfalls..</p></div></div>
+      <div class="scard reveal">
+  <div class="portrait">
+    <span class="ring r2"></span>
+    <span class="ring"></span>
+    <img src="YOUR_IMAGE_PATH/Ato_Quayson_portrait.jpg" alt="Prof. Ato Quayson" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:inherit;">
+  </div>
+  <div class="body">
+    <span class="role">Keynote</span>
+    <h3>Prof. Ato Quayson</h3>
+    <div class="aff">Stanford University</div>
+    <p>On the question of reparations: pain points, principles, and pitfalls</p>
+    <button class="bio-toggle" onclick="document.getElementById('aq-bio').classList.toggle('open')" aria-expanded="false" aria-controls="aq-bio">
+      View bio
+    </button>
+    <div class="bio-drawer" id="aq-bio" hidden>
+      <p>Ato Quayson is the Jean G. and Morris M. Doyle Professor of Interdisciplinary Studies and English at Stanford University. He completed his BA (Hons, First Class) at the University of Ghana and his PhD in English at the University of Cambridge. He has held positions at Cambridge (1995–2005), the University of Toronto (2005–2017), and New York University (2017–2019), before joining Stanford in 2019.</p>
+      <p>He has published 6 monographs and 10 edited volumes, including the award-winning <em>Oxford Street, Accra: City Life and the Itineraries of Transnationalism</em> (Duke UP, 2014) — winner of the Urban History Association Prize and named one of <em>The Guardian</em>'s 10 Best Books on Cities — and <em>Tragedy and Postcolonial Literature</em> (Cambridge UP, 2021), winner of the Warren-Brooks Prize for Literary Criticism in 2022. Two further volumes are forthcoming from Cambridge UP in 2026.</p>
+      <p>Professor Quayson is an elected Fellow of the Ghana Academy of Arts and Sciences, the Royal Society of Canada, the British Academy, and the American Academy of Arts and Sciences.</p>
+    </div>
+  </div>
+</div>
       <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">CG</span><span class="note">Official portrait to be added</span></div>
         <div class="body"><span class="role">Keynote</span><h3>Dr. Cheryl Grills</h3><div class="aff">California Reparations Task Force · National African American Reparation Commission</div>
         <p>On trauma, healing and institutional responsibility in the work of reparations and community repair.</p></div></div>
