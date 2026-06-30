@@ -928,7 +928,7 @@ document.querySelector('.bio-toggle').addEventListener('click', function () {
 
       
       <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">MV</span><span class="note">Official portrait to be added</span></div>
-        <div class="body"><span class="role">Keynote</span><h3>Professor Meera Venkatachalam</h3><div class="aff">Ghana</div>
+        <div class="body"><span class="role">Keynote</span><h3>Dr. Meera Venkatachalam</h3><div class="aff">Ghana</div>
         <p> </p></div></div>
     </div>
   </div>
@@ -940,16 +940,111 @@ document.querySelector('.bio-toggle').addEventListener('click', function () {
     <div class="sec-head reveal"><span class="label"><h2>Conference Team</h2></span>
       <p>The conference is directed and staffed by an international team of consultants drawn primarily from OPUS and AKRI, alongside senior practitioners from partner organizations rooted in the Tavistock tradition of Group Relations.</p></div>
     <div class="spk">
-      <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">AS</span><span class="note">Portrait to be added</span></div>
-        <div class="body"><span class="role">Conference Director</span><h3>Augustine Paapa Sagoe</h3><div class="aff">Ghana / UK</div>
-        <p>  </p></div></div>
-      <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">MD</span><span class="note">Portrait to be added</span></div>
-        <div class="body"><span class="role">Associate Director</span><h3>Maxine Dennis</h3><div class="aff">  </div>
-        <p> </p></div></div>
-      <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">GS</span><span class="note">Portrait to be added</span></div>
-        <div class="body"><span class="role">GRC Conference Administrator</span><h3>Dr Gladys Setordzie</h3><div class="aff">Ghana</div>
-        <p> </p></div></div>
+      
+      <!-- Augustine Paapa Sagoe -->
+<div class="scard reveal">
+  <div class="portrait">
+    <img src="augustine-sagoe.jpg" alt="Augustine Paapa Sagoe" />
+  </div>
+  <div class="body">
+    <span class="role">Conference Director</span>
+    <h3>Augustine Paapa Sagoe</h3>
+    <div class="aff">Ghana / UK</div>
+    <p> </p>
+    <button class="bio-btn" onclick="document.getElementById('bio-as').classList.add('open')">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="bio-overlay" id="bio-as" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bio-modal">
+    <button class="bio-close" onclick="document.getElementById('bio-as').classList.remove('open')">&times;</button>
+    <div class="bio-header">
+      <img src="augustine-sagoe.jpg" alt="Augustine Paapa Sagoe" class="bio-portrait" />
+      <div>
+        <h3>Augustine Paapa Sagoe</h3>
+        <span class="bio-role">Conference Director</span>
+        <div class="bio-aff">Ghana / UK</div>
+      </div>
     </div>
+    <div class="bio-body">
+      <p>Augustine Sagoe is an organisational consultant, executive coach, and Group Relations practitioner grounded in systems-psychodynamic thinking and the Tavistock tradition. He has directed and staffed Group Relations conferences and leadership programmes across Europe, Africa, Asia, and the Caribbean, and has helped pioneer Group Relations work in Ghana.
+A former NHS Executive Director in England, Augustine brings extensive experience in leadership, organisational transformation, and the dynamics of authority, identity, and difference. His work supports leaders, organisations, and communities in understanding conscious and unconscious processes shaping institutional life and collective action.
+He is a Director and Trustee of OPUS (Organisation for Promoting Understanding of Society, UK), Co-Founder of Palena Gardens Centre in Ghana, and a member of the Global Advisory Council of the KNUST Alumni Association. His interests include how slavery and colonial legacies continue to shape institutions, leadership, and social relations, and how these histories can inform reparative and transformative change. As Conference Director, he is committed to creating a reflective space for exploring leadership, authority, identity, and difference in ways that foster insight, collaboration, and meaningful change.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Maxine Dennis -->
+<div class="scard reveal">
+  <div class="portrait">
+    <img src="Portrait-Maxine-Dennis.jpg" alt="Maxine Dennis" />
+  </div>
+  <div class="body">
+    <span class="role">Associate Director</span>
+    <h3>Maxine Dennis</h3>
+    <div class="aff"> </div>
+    <p> </p>
+    <button class="bio-btn" onclick="document.getElementById('bio-md').classList.add('open')">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="bio-overlay" id="bio-md" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bio-modal">
+    <button class="bio-close" onclick="document.getElementById('bio-md').classList.remove('open')">&times;</button>
+    <div class="bio-header">
+      <img src="Portrait-Maxine-Dennis.jpg" alt="Maxine Dennis" class="bio-portrait" />
+      <div>
+        <h3>Maxine Dennis</h3>
+        <span class="bio-role">Associate Director</span>
+      </div>
+    </div>
+    <div class="bio-body">
+      <p>Bio text goes here...</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Dr Gladys Setordzie -->
+<div class="scard reveal">
+  <div class="portrait">
+    <img src="Portrait-Gladys-Setordzie.jpg" alt="Dr Gladys Setordzie" />
+  </div>
+  <div class="body">
+    <span class="role">GRC Conference Administrator</span>
+    <h3>Dr Gladys Setordzie</h3>
+    <div class="aff">Ghana</div>
+    <p> </p>
+    <button class="bio-btn" onclick="document.getElementById('bio-gs').classList.add('open')">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="bio-overlay" id="bio-gs" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bio-modal">
+    <button class="bio-close" onclick="document.getElementById('bio-gs').classList.remove('open')">&times;</button>
+    <div class="bio-header">
+      <img src="Portrait-Gladys-Setordzie.jpg" alt="Dr Gladys Setordzie" class="bio-portrait" />
+      <div>
+        <h3>Dr Gladys Setordzie</h3>
+        <span class="bio-role">GRC Conference Administrator</span>
+        <div class="bio-aff">Ghana</div>
+      </div>
+    </div>
+    <div class="bio-body">
+      <p>Bio text goes here...</p>
+    </div>
+  </div>
+</div>
+    </div>
+    
+    
     <div class="team-sub">Consultants</div>
   <div class="consultants">
 
