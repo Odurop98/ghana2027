@@ -560,7 +560,12 @@ footer a:hover{color:var(--gold-2)}
   display: block;
   margin-bottom: 0.4rem;
 }
-  
+.cpic img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 }
   
 </style>
@@ -947,16 +952,287 @@ document.querySelector('.bio-toggle').addEventListener('click', function () {
     </div>
     <div class="team-sub">Consultants</div>
   <div class="consultants">
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Raymond Bakaitis</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Leslie Brissett</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Rebecca Ellison</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Ewuadua Ewusie</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Mary Fullerton</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Olya Khaleelee</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Michelle May</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Veena Pinto</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Carlos Remotti-Breton</div><div class="cnote">Photo &amp; bio to be added</div></div>
-  <div class="cons reveal"><div class="cpic"><svg viewBox="0 0 24 24" fill="none" stroke="#E3C775" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div><div class="cname">Leo Wilton</div><div class="cnote">Photo &amp; bio to be added</div></div>
+
+  <!-- Raymond Bakaitis -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="raymond-bakaitis.jpg" alt="Raymond Bakaitis" />
+    </div>
+    <div class="cname">Raymond Bakaitis</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-rb').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-rb" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-rb').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="raymond-bakaitis.jpg" alt="Raymond Bakaitis" class="bio-portrait" />
+        <div>
+          <h3>Raymond Bakaitis</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Raymond Bakaitis is a psychologist practicing in Los Angeles. He is a Past-President
+of the A. K. Rice Institute for the Study of Social Systems (AKRI), a founding co-creator
+of International Group Relations China (IGRC), and an active member of the Lithuanian
+Group Relations Society (LGRS). As an American he is interested in the complexities
+of the conflicting narratives around the story and identity of the United States as a
+nation. He was a member of AKRI’s Reparations Committee. He is a member of a
+long-standing group of White Men Examining White Supremacy. He is interested in
+exploring the potential for creative collaboration between a group relations organization
+(AKRI) and an organization whose mission is to explore the individual’s role as a citizen
+in society (OPUS – the Organization for Promoting Understanding of Society).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leslie Brissett -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="leslie-brissett.jpg" alt="Leslie Brissett" />
+    </div>
+    <div class="cname">Leslie Brissett</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-lb').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-lb" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-lb').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="leslie-brissett.jpg" alt="Leslie Brissett" class="bio-portrait" />
+        <div>
+          <h3>Leslie Brissett</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rebecca Ellison -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="rebecca-ellison.jpg" alt="Rebecca Ellison" />
+    </div>
+    <div class="cname">Rebecca Ellison</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-re').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-re" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-re').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="rebecca-ellison.jpg" alt="Rebecca Ellison" class="bio-portrait" />
+        <div>
+          <h3>Rebecca Ellison</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ewuadua Ewusie -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="ewuadua-ewusie.jpg" alt="Ewuadua Ewusie" />
+    </div>
+    <div class="cname">Ewuadua Ewusie</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-ee').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-ee" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-ee').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="ewuadua-ewusie.jpg" alt="Ewuadua Ewusie" class="bio-portrait" />
+        <div>
+          <h3>Ewuadua Ewusie</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mary Fullerton -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="mary-fullerton.jpg" alt="Mary Fullerton" />
+    </div>
+    <div class="cname">Mary Fullerton</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-mf').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-mf" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-mf').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="mary-fullerton.jpg" alt="Mary Fullerton" class="bio-portrait" />
+        <div>
+          <h3>Mary Fullerton</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Olya Khaleelee -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="olya-khaleelee.jpg" alt="Olya Khaleelee" />
+    </div>
+    <div class="cname">Olya Khaleelee</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-ok').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-ok" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-ok').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="olya-khaleelee.jpg" alt="Olya Khaleelee" class="bio-portrait" />
+        <div>
+          <h3>Olya Khaleelee</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Olya Khaleelee is a corporate psychologist and organisational consultant with a
+particular interest in leadership, and organisational transition and
+transformation. She is the Chairwoman of a charity - OPUS: an Organisation for
+Promoting Understanding of Society which promotes development of the
+reflective citizen. She is a professional partner of the Tavistock Institute and was
+the first female director of the Leicester Conference on the theme of Authority
+Leadership and Organisation. Olya has published extensively in the areas of
+leadership and system psychodynamics in organisations, and beyond, into
+society. She has co-authored three books with Halina Brunning, the first
+entitled: “Danse Macabre and other stories – A psychoanalytic perspective on
+global dynamics”, published in 2021 by Phoenix. The second book also published
+in 2023 by Phoenix, was entitled “The Covid Trail - Psychodynamic Explorations”.
+Finally, in 2025 with Karnac, they published Sitting on a Suitcase, Psychoanalytic
+Stories. A fourth book, entitled Psychoanalytic Perspectives on a Dangerous
+World, is due for publication soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Michelle May -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="michelle-may.jpg" alt="Michelle May" />
+    </div>
+    <div class="cname">Michelle May</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-mm').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-mm" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-mm').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="michelle-may.jpg" alt="Michelle May" class="bio-portrait" />
+        <div>
+          <h3>Michelle May</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Veena Pinto -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="veena-pinto.jpg" alt="Veena Pinto" />
+    </div>
+    <div class="cname">Veena Pinto</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-vp').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-vp" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-vp').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="veena-pinto.jpg" alt="Veena Pinto" class="bio-portrait" />
+        <div>
+          <h3>Veena Pinto</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carlos Remotti-Breton -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="carlos-remotti-breton.jpg" alt="Carlos Remotti-Breton" />
+    </div>
+    <div class="cname">Carlos Remotti-Breton</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-cr').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-cr" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-cr').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="carlos-remotti-breton.jpg" alt="Carlos Remotti-Breton" class="bio-portrait" />
+        <div>
+          <h3>Carlos Remotti-Breton</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Bio text goes here...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leo Wilton -->
+  <div class="cons reveal">
+    <div class="cpic">
+      <img src="leo-wilton.jpg" alt="Leo Wilton" />
+    </div>
+    <div class="cname">Leo Wilton</div>
+    <button class="bio-btn" onclick="document.getElementById('bio-lw').classList.add('open')">View Profile</button>
+  </div>
+
+  <div class="bio-overlay" id="bio-lw" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="bio-modal">
+      <button class="bio-close" onclick="document.getElementById('bio-lw').classList.remove('open')">&times;</button>
+      <div class="bio-header">
+        <img src="leo-wilton.jpg" alt="Leo Wilton" class="bio-portrait" />
+        <div>
+          <h3>Leo Wilton</h3>
+          <span class="bio-role">Consultant</span>
+        </div>
+      </div>
+      <div class="bio-body">
+        <p>Leo Wilton
+Conference Bio
+Professor, Department of Human Development, State University of New York at Binghamton,
+USA; Lifetime Member, Association of Black Psychologists; President, A. K. Rice Institute for the
+Study of Social Systems (AKRI); Member and Past President, New York Center for the Study of
+Groups, Organizations, and Social Systems; Member, Washington-Baltimore Center for the
+Study of Group Relations (WBC); Co-Creator, Group Relations International; Fellow, American
+Psychological Association (APA); Lifetime Member, Association for the Study of the Worldwide
+African Diaspora (ASWAD).</p>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
   </div>
