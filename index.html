@@ -836,10 +836,68 @@ document.querySelector('.bio-toggle').addEventListener('click', function () {
     </div>
    
     <div class="spk">
-      <div class="scard reveal"><div class="portrait"><span class="ring r2"></span><span class="ring"></span><span class="mono">NK</span><span class="note">Official portrait to be added</span></div>
-        <div class="body"><span class="role">Guest of Honour</span><h3>Nana Kobina Nketsiah V</h3><div class="aff">Traditional Chief of Essikado · Ghana</div>
-        <p>Custodian of historical memory and traditional leadership, opening the conference with a reflection on authority, lineage and the living past.</p></div></div>
+     <!-- Nana Kobina Nketsiah V -->
+<div class="scard reveal">
+  <div class="portrait">
+    <img src="Portrait-Nana-Kobina.jpg" alt="Nana Kobina Nketsiah V" />
+  </div>
+  <div class="body">
+    <span class="role">Guest of Honour</span>
+    <h3>Nana Kobina Nketsiah V</h3>
+    <div class="aff">Traditional Chief of Essikado · Ghana</div>
+    <p>Custodian of historical memory and traditional leadership, opening the conference with a reflection on authority, lineage and the living past.</p>
+    <button class="bio-btn" onclick="document.getElementById('bio-nk').classList.add('open')">
+      View Profile
+    </button>
+  </div>
+</div>
 
+<div class="bio-overlay" id="bio-nk" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="bio-modal">
+    <button class="bio-close" onclick="document.getElementById('bio-nk').classList.remove('open')">&times;</button>
+    <div class="bio-header">
+      <img src="Portrait-Nana-Kobina.jpg" alt="Nana Kobina Nketsiah V" class="bio-portrait" />
+      <div>
+        <h3>Nana Kobina Nketsiah V</h3>
+        <span class="bio-role">Guest of Honour</span>
+        <div class="bio-aff">Traditional Chief of Essikado · Ghana</div>
+      </div>
+    </div>
+    <div class="bio-body">
+      <p>Nana Kobina Nketsia V is the Paramount Chief (Omanhen) of the Essikado (British Sekondi) Traditional Area in the 
+Western Region of Ghana. He is a sportsman and a committed Pan-Africanist. He is the founder of the Nana Kobina 
+Nketsia IV Trust a non-partisan and non-profit organization named after one of the heroes of Ghana’s independence 
+struggle whose life straddled indigenous community development and the National Agenda. The Trust as part of its 
+objects is to champion African-Centered Development; African-centered governance and articulate the Integration of 
+Indigenous Knowledge Systems among others. 
+Until his retirement nana was a lecturer at the University of Cape Coast from 1995 to 2012 and served as the 
+examination officer in the history department and also the coordinator for the department of African studies at a 
+point during his employment. 
+Nana Nketsia holds a Ph.D. in African History from the University of Calabar (Nigeria) and a B.A. in Modern History 
+from the University of Ghana 
+He has a publications titled “African Culture in Governance and Development (the Ghana Paradigm)” published by 
+Ghana University Press and University of Cape Coast Press. He also has the following manuscript to his credit “The 
+Oron Nation 1600-1900: Evolution of Nationhood in the Cross River Belt which was Foreword by Prof. Obaro Ikeme 
+and published by the Press Information Services Ltd., Lagos, in 1994 and “The Quest for Self Determination: A History 
+of the Oron in Nigeria” in Press, (publishers-ibid) 
+Currently, Nana Nketsia has three manuscript in preparation and they are “A Perspective of Akan Chieftaincy”, “An 
+Awesome Responsibility; A Reflection of Chieftaincy among the Akan” and “The Epic of Positive Action: The 
+Watershed of the African Struggle for Emancipation” 
+Nana Nketsia has chaired and served on a lot of boards at the national and community level and currently served as 
+the Chair for the Advisory Board of WaterAid, Ghana, Deputy Chair of Bisa Abrewa Museum, and a Director of the 
+Panafest (Pan African Festival) Foundation just to mention a few. 
+Nana Nketsia has been a Guest Speaker at international conferences and public lectures among these are “The 
+African Heritage Studies Association at 50 Conference, at Washington DC, USA, in November 2019, The University of 
+Birmingham Pan African Conference, on “Re-engaging Pan Africanism” at the University of Birmingham United 
+Kingdom in November 2018 and The Sixth Onkgopotse Tiro Memorial Lecture at the University of Limpopo, South 
+Africa, in September 2018 just to mentioned a few. 
+Currently nana has been a part time lecturer at the University of Cape Coast since his retirement teaching 
+postgraduate course in “Intellectual history of Ghana” and “Military and one party rule in postcolonial Africa”. He has 
+won many awards and notable among them is the EXLA Award on Distinguished Traditional Leader in 2015 and the 
+Personality of the Year (Western Region) in 2004.</p>
+    </div>
+  </div>
+</div>
       
   <div class="scard reveal">
   <div class="portrait">
