@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sponsorship Opportunities</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5EFE4;
+    --brown: #3B1F0E;
+    --bronze: #B8860B;
+    --bronze-light: #E3C775;
+    --mid: #7A4B28;
+    --card-bg: #FBF6EE;
+    --border: rgba(184,134,11,0.25);
+    --text: #2C1608;
+    --muted: #6B4C30;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── Section wrapper ── */
+  .sponsor-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+  }
+
+  /* ── Header ── */
+  .sponsor-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1rem;
+  }
+
+  .sponsor-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--brown);
+    max-width: 680px;
+    margin-bottom: 1.5rem;
+  }
+
+  .sponsor-intro {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 660px;
+    margin-bottom: 1rem;
+  }
+
+  .sponsor-sub {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── Divider ── */
+  .tier-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .tier-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ── Premium grid ── */
+  .premium-grid {
+    display: grid;
+    grid-template-columns: 1.18fr 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── Community grid ── */
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 4rem;
+  }
+
+  /* ── Tier card ── */
+  .tcard {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .tcard:hover { border-color: rgba(184,134,11,0.5); }
+
+  /* Presenting card — featured */
+  .tcard.featured {
+    background: var(--brown);
+    border-color: var(--bronze-light);
+    border-width: 1px;
+  }
+  .tcard.featured .tier-name,
+  .tcard.featured .tier-price,
+  .tcard.featured .tier-desc { color: var(--cream); }
+  .tcard.featured .tier-price { color: var(--bronze-light); }
+  .tcard.featured .tier-badge { background: var(--bronze-light); color: var(--brown); }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--brown);
+    color: var(--bronze-light);
+    padding: 4px 10px;
+    border-radius: 2px;
+    width: fit-content;
+    margin-bottom: 0.25rem;
+  }
+
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--brown);
+    line-height: 1.1;
+  }
+
+  .tier-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: var(--bronze);
+    letter-spacing: 0.02em;
+  }
+
+  .tier-divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 0.25rem 0;
+  }
+  .tcard.featured .tier-divider { background: rgba(227,199,117,0.3); }
+
+  .tier-desc {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  /* ── Why sponsor ── */
+  .why-section {
+    margin-bottom: 4rem;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .why-card {
+    padding: 1.5rem 1.25rem;
+    border-left: 1.5px solid var(--bronze-light);
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 0.6rem;
+  }
+
+  .why-desc {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    background: var(--brown);
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-text p {
+    font-size: 13.5px;
+    color: rgba(245,239,228,0.65);
+    line-height: 1.7;
+    max-width: 420px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    background: var(--bronze-light);
+    color: var(--brown);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-outline {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,239,228,0.4);
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--bronze-light); background: rgba(227,199,117,0.08); }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .premium-grid { grid-template-columns: 1fr; }
+    .community-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .cta-block { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 560px) {
+    .sponsor-section { padding: 3rem 1.25rem 4rem; }
+    .cta-buttons { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="sponsor-section">
+
+  <!-- Header -->
+  <p class="sponsor-label">Partner With Us</p>
+  <h2 class="sponsor-heading">Sponsorship Opportunities</h2>
+  <p class="sponsor-intro">Join us in shaping the future by becoming an official sponsor. Your organisation's support directly fuels our upcoming international conference, fostering breakthrough dialogues on leadership, authority, and institutional legacies.</p>
+  <p class="sponsor-sub">Choose a sponsorship tier that aligns with your organisation's philanthropic and strategic vision.</p>
+
+  <!-- Corporate & Premium Tiers -->
+  <div class="tier-label">Corporate &amp; Premium Tiers</div>
+  <div class="premium-grid">
+
+    <div class="tcard featured">
+      <div>
+        <div class="tier-badge">Presenting Sponsor</div>
+        <div class="tier-name">Presenting<br>Sponsor</div>
+      </div>
+      <div class="tier-price">$50,000</div>
+      <div class="tier-divider"></div>
+      <p class="tier-desc">Maximum visibility and co-branded integration across all key conference events, keynote addresses, and high-level international media assets.</p>
+    </div>
+
+    <div class="tcard">
+      <div>
+        <div class="tier-badge">Gold</div>
+        <div class="tier-name">Gold<br>Sponsor</div>
+      </div>
+      <div class="tier-price">$25,000</div>
+      <div class="tier-divider"></div>
+      <p class="tier-desc">Prominent branding across major plenary sessions, digital platforms, and elite networking receptions.</p>
+    </div>
+
+    <div class="tcard">
+      <div>
+        <div class="tier-badge">Silver</div>
+        <div class="tier-name">Silver<br>Sponsor</div>
+      </div>
+      <div class="tier-price">$10,000</div>
+      <div class="tier-divider"></div>
+      <p class="tier-desc">Core branding inclusion across conference collateral, digital marketing campaigns, and select breakout tracks.</p>
+    </div>
+
+  </div>
+
+  <!-- Community & Educational Tiers -->
+  <div class="tier-label">Community &amp; Educational Tiers</div>
+  <div class="community-grid">
+
+    <div class="tcard">
+      <div>
+        <div class="tier-badge">Community</div>
+        <div class="tier-name">Community<br>Sponsor</div>
+      </div>
+      <div class="tier-price">$2,500 – $5,000</div>
+      <div class="tier-divider"></div>
+      <p class="tier-desc">Empower local organisational initiatives and community-led dialogue. Includes branding on local outreach materials and community forum sessions.</p>
+    </div>
+
+    <div class="tcard">
+      <div>
+        <div class="tier-badge">Student</div>
+        <div class="tier-name">Student<br>Sponsor</div>
+      </div>
+      <div class="tier-price">$500 – $2,000</div>
+      <div class="tier-divider"></div>
+      <p class="tier-desc">Directly underwrite attendance, travel, or research grants for the next generation of leadership and systems thinkers.</p>
+    </div>
+
+  </div>
+
+  <!-- Why Sponsor -->
+  <div class="why-section">
+    <div class="tier-label">Why Sponsor</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-title">Global Reach</div>
+        <p class="why-desc">Align your brand with high-level international delegates, institutional directors, and board-level executives.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Thought Leadership</div>
+        <p class="why-desc">Demonstrate your commitment to progressive institutional development and lasting social impact.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Cultural &amp; Academic Impact</div>
+        <p class="why-desc">Support critical dialogue at the intersection of history, leadership, and future institutional frameworks.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-text">
+      <h3>Secure Your Sponsorship</h3>
+      <p>Download the full Sponsorship Package or contact our executive planning team directly to discuss tailored alignment.</p>
+    </div>
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary">Download Package</a>
+      <a href="mailto:a.sagoepaapa@opus.org.uk" class="btn-outline">Contact Our Team</a>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
