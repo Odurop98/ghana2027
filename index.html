@@ -1813,120 +1813,158 @@ Member of the Board of Trustees of Voorhees University, South Carolina, USA.</p>
 <section id="dates">
   <div class="wrap">
     
+
 <style>
-  .kd-wrap { padding: 3rem 0 2rem; font-family: var(--font-sans); }
-  .kd-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-accent); margin-bottom: 1rem; }
-  .kd-heading { font-family: var(--font-voice); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; line-height: 1.2; }
-  .kd-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 2.5rem; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.kd { padding: 4rem 1rem; text-align: center; font-family: var(--font-sans); }
+.kd-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-accent); margin-bottom: 1.25rem; }
+.kd-eyebrow::before, .kd-eyebrow::after { content: ''; display: block; width: 28px; height: 0.5px; background: var(--border-accent); }
+.kd-title { font-family: var(--font-voice); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 500; color: var(--text-primary); line-height: 1.15; margin-bottom: 0.75rem; }
+.kd-sub { font-size: 14px; color: var(--text-secondary); max-width: 460px; margin: 0 auto 3.5rem; line-height: 1.7; }
 
-  .kd-grid { display: flex; flex-direction: column; gap: 0; }
+.kd-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; max-width: 820px; margin: 0 auto; }
 
-  .kd-item { display: grid; grid-template-columns: 90px 1fr; gap: 0 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); position: relative; }
-  .kd-item:first-child { border-top: 0.5px solid var(--border); }
+.kd-card { background: var(--surface-2); padding: 2rem 1.5rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; text-align: left; transition: background 0.15s; cursor: default; }
+.kd-card:hover { background: var(--surface-1); }
 
-  .kd-left { display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
-  .kd-countdown { font-size: 22px; font-weight: 500; color: var(--text-primary); line-height: 1; }
-  .kd-unit { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
-  .kd-past { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding-top: 4px; }
+.kd-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.kd-icon { width: 36px; height: 36px; border-radius: var(--radius); border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); flex-shrink: 0; }
+.kd-pill { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+.pill-open { background: var(--bg-success); color: var(--text-success); }
+.pill-soon { background: var(--bg-warning); color: var(--text-warning); }
+.pill-urgent { background: var(--bg-danger); color: var(--text-danger); }
+.pill-closed { background: var(--surface-1); color: var(--text-muted); border: 0.5px solid var(--border); }
 
-  .kd-right { display: flex; flex-direction: column; gap: 0.4rem; }
-  .kd-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius); width: fit-content; }
-  .kd-badge.urgent { background: var(--bg-danger); color: var(--text-danger); }
-  .kd-badge.soon { background: var(--bg-warning); color: var(--text-warning); }
-  .kd-badge.open { background: var(--bg-success); color: var(--text-success); }
-  .kd-badge.closed { background: var(--surface-1); color: var(--text-muted); border: 0.5px solid var(--border); }
+.kd-days { font-family: var(--font-voice); font-size: 2.8rem; font-weight: 500; color: var(--text-primary); line-height: 1; }
+.kd-days-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+.kd-days-passed { font-size: 13px; font-weight: 500; color: var(--text-muted); padding-top: 8px; }
 
-  .kd-date { font-size: 13px; color: var(--text-muted); }
-  .kd-title { font-family: var(--font-voice); font-size: 1.15rem; font-weight: 500; color: var(--text-primary); line-height: 1.2; }
-  .kd-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; max-width: 520px; }
+.kd-divider { height: 0.5px; background: var(--border); }
 
-  .kd-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 2px; vertical-align: 1px; }
-  .kd-dot.urgent { background: var(--text-danger); }
-  .kd-dot.soon { background: var(--text-warning); }
-  .kd-dot.open { background: var(--text-success); }
-  .kd-dot.closed { background: var(--text-muted); }
+.kd-card-name { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.35; }
+.kd-card-date { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.kd-card-desc { font-size: 12.5px; color: var(--text-secondary); line-height: 1.65; }
 
-  @media (max-width: 500px) {
-    .kd-item { grid-template-columns: 1fr; gap: 0.75rem; }
-    .kd-left { flex-direction: row; align-items: baseline; gap: 6px; }
-    .kd-unit { margin-top: 0; }
-  }
+.kd-ticker { margin-top: 3rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.kd-ticker-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.kd-ticker-num { font-family: var(--font-voice); font-size: 2rem; font-weight: 500; color: var(--text-primary); line-height: 1; min-width: 48px; text-align: center; }
+.kd-ticker-unit { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+.kd-ticker-sep { font-size: 1.5rem; color: var(--text-muted); padding-bottom: 14px; }
+.kd-ticker-label { font-size: 12px; color: var(--text-secondary); margin-top: 0.75rem; text-align: center; }
 </style>
 
-<div class="kd-wrap">
-  <h2 class="sr-only">Key conference dates and deadlines</h2>
-  <p class="kd-eyebrow">Important Dates</p>
-  <h2 class="kd-heading">Key Deadlines</h2>
-  <p class="kd-sub">Mark your calendar — these dates shape your path to the conference.</p>
+<h2 class="sr-only">Key conference deadlines with live countdowns</h2>
 
-  <div class="kd-grid" id="kdGrid"></div>
+<div class="kd">
+  <div class="kd-eyebrow">Important Dates</div>
+  <h2 class="kd-title">Key Deadlines</h2>
+  <p class="kd-sub">Three dates that shape your path to the conference. Mark your calendar.</p>
+
+  <div class="kd-cards" id="kdCards"></div>
+
+  <div class="kd-ticker">
+    <div class="kd-ticker-item"><div class="kd-ticker-num" id="td">--</div><div class="kd-ticker-unit">days</div></div>
+    <div class="kd-ticker-sep">:</div>
+    <div class="kd-ticker-item"><div class="kd-ticker-num" id="th">--</div><div class="kd-ticker-unit">hours</div></div>
+    <div class="kd-ticker-sep">:</div>
+    <div class="kd-ticker-item"><div class="kd-ticker-num" id="tm">--</div><div class="kd-ticker-unit">mins</div></div>
+    <div class="kd-ticker-sep">:</div>
+    <div class="kd-ticker-item"><div class="kd-ticker-num" id="ts">--</div><div class="kd-ticker-unit">secs</div></div>
+  </div>
+  <div class="kd-ticker-label" id="tickerLabel" style="margin-top:0.75rem; font-size:12px; color:var(--text-muted);"></div>
 </div>
 
 <script>
 const dates = [
   {
-    date: new Date('2026-10-02'),
-    title: 'Call for Papers — abstract deadline',
-    desc: 'Last day to submit abstract proposals. The committee will evaluate submissions over the following six weeks, with decisions communicated by mid-November.',
-    id: 'papers'
+    date: new Date('2026-10-02T23:59:59'),
+    name: 'Call for papers — abstract deadline',
+    desc: 'Last day to submit your abstract. The committee will review all proposals and respond by mid-November.',
+    icon: 'ti-file-text'
   },
   {
-    date: new Date('2026-12-21'),
-    title: 'Early bird registration closes',
-    desc: 'Last day for reduced-rate registration — just before the Christmas break. Securing your place early signals your commitment to attend.',
-    id: 'earlybird'
+    date: new Date('2026-12-21T23:59:59'),
+    name: 'Early bird registration closes',
+    desc: 'Secure your place at the reduced rate before the Christmas break. A commitment before the holidays.',
+    icon: 'ti-tag'
   },
   {
-    date: new Date('2027-02-08'),
-    title: 'Registration deadline',
-    desc: 'Final day to register for any conference event. This gives administrators and management two full weeks to prepare before the conference begins.',
-    id: 'register'
+    date: new Date('2027-02-08T23:59:59'),
+    name: 'Final registration deadline',
+    desc: 'Last day to register for any conference event, giving organisers two full weeks to prepare.',
+    icon: 'ti-calendar-check'
   }
 ];
 
-function daysUntil(target) {
-  const now = new Date();
-  now.setHours(0,0,0,0);
-  const t = new Date(target);
-  t.setHours(0,0,0,0);
+function daysUntil(d) {
+  const now = new Date(); now.setHours(0,0,0,0);
+  const t = new Date(d); t.setHours(0,0,0,0);
   return Math.round((t - now) / 86400000);
 }
 
-function badge(days) {
-  if (days < 0) return ['closed', 'Closed'];
-  if (days <= 30) return ['urgent', 'Closing soon'];
-  if (days <= 90) return ['soon', 'Coming up'];
-  return ['open', 'Open'];
+function pillClass(days) {
+  if (days < 0) return ['pill-closed','Closed'];
+  if (days <= 30) return ['pill-urgent','Closing soon'];
+  if (days <= 90) return ['pill-soon','Coming up'];
+  return ['pill-open','Open'];
 }
 
-function fmt(d) {
-  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+function fmtDate(d) {
+  return d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
 }
 
-const grid = document.getElementById('kdGrid');
+function pad(n) { return String(Math.floor(n)).padStart(2,'0'); }
+
+const grid = document.getElementById('kdCards');
 
 dates.forEach(item => {
   const days = daysUntil(item.date);
-  const [cls, label] = badge(days);
+  const [cls, label] = pillClass(days);
+  const countHtml = days < 0
+    ? `<div class="kd-days-passed">Deadline passed</div>`
+    : `<div class="kd-days">${days}</div><div class="kd-days-label">days remaining</div>`;
 
-  const el = document.createElement('div');
-  el.className = 'kd-item';
-
-  const leftHTML = days < 0
-    ? `<div class="kd-past">Passed</div>`
-    : `<div class="kd-countdown">${days}</div><div class="kd-unit">days left</div>`;
-
-  el.innerHTML = `
-    <div class="kd-left">${leftHTML}</div>
-    <div class="kd-right">
-      <span class="kd-badge ${cls}"><span class="kd-dot ${cls}"></span>${label}</span>
-      <div class="kd-date">${fmt(item.date)}</div>
-      <div class="kd-title">${item.title}</div>
-      <div class="kd-desc">${item.desc}</div>
+  const card = document.createElement('div');
+  card.className = 'kd-card';
+  card.innerHTML = `
+    <div class="kd-card-top">
+      <div class="kd-icon"><i class="ti ${item.icon}" style="font-size:17px" aria-hidden="true"></i></div>
+      <span class="kd-pill ${cls}">${label}</span>
     </div>
+    ${countHtml}
+    <div class="kd-divider"></div>
+    <div>
+      <div class="kd-card-name">${item.name}</div>
+      <div class="kd-card-date"><i class="ti ti-calendar" style="font-size:13px" aria-hidden="true"></i>${fmtDate(item.date)}</div>
+    </div>
+    <div class="kd-card-desc">${item.desc}</div>
   `;
-  grid.appendChild(el);
+  grid.appendChild(card);
 });
+
+const upcoming = dates.filter(d => d.date > new Date()).sort((a,b)=>a.date-b.date);
+const target = upcoming.length ? upcoming[0] : null;
+
+if (target) {
+  document.getElementById('tickerLabel').textContent = 'Counting down to: ' + target.name;
+  function tick() {
+    const diff = target.date - new Date();
+    if (diff <= 0) { document.getElementById('tickerLabel').textContent = 'Deadline has passed.'; return; }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById('td').textContent = pad(d);
+    document.getElementById('th').textContent = pad(h);
+    document.getElementById('tm').textContent = pad(m);
+    document.getElementById('ts').textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+} else {
+  document.getElementById('tickerLabel').textContent = 'All deadlines have passed.';
+  ['td','th','tm','ts'].forEach(id => document.getElementById(id).textContent = '00');
+}
 </script>
   </div>
 </section>
