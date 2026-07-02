@@ -1678,6 +1678,7 @@ Member of the Board of Trustees of Voorhees University, South Carolina, USA.</p>
   </div>
 </section>
 
+
 <!-- GROUP RELATIONS band -->
 <section id="grc">
   <div class="wrap">
@@ -1809,6 +1810,128 @@ Member of the Board of Trustees of Voorhees University, South Carolina, USA.</p>
     </div>
   </div>
 </section>
+<section id="dates">
+  <div class="wrap">
+   
+<style>
+  .kd-wrap { padding: 3rem 0 2rem; font-family: var(--font-sans); }
+  .kd-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-accent); margin-bottom: 1rem; }
+  .kd-heading { font-family: var(--font-voice); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; color: var(--text-primary); margin-bottom: 0.4rem; line-height: 1.2; }
+  .kd-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 2.5rem; }
+
+  .kd-grid { display: flex; flex-direction: column; gap: 0; }
+
+  .kd-item { display: grid; grid-template-columns: 90px 1fr; gap: 0 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); position: relative; }
+  .kd-item:first-child { border-top: 0.5px solid var(--border); }
+
+  .kd-left { display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
+  .kd-countdown { font-size: 22px; font-weight: 500; color: var(--text-primary); line-height: 1; }
+  .kd-unit { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
+  .kd-past { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding-top: 4px; }
+
+  .kd-right { display: flex; flex-direction: column; gap: 0.4rem; }
+  .kd-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius); width: fit-content; }
+  .kd-badge.urgent { background: var(--bg-danger); color: var(--text-danger); }
+  .kd-badge.soon { background: var(--bg-warning); color: var(--text-warning); }
+  .kd-badge.open { background: var(--bg-success); color: var(--text-success); }
+  .kd-badge.closed { background: var(--surface-1); color: var(--text-muted); border: 0.5px solid var(--border); }
+
+  .kd-date { font-size: 13px; color: var(--text-muted); }
+  .kd-title { font-family: var(--font-voice); font-size: 1.15rem; font-weight: 500; color: var(--text-primary); line-height: 1.2; }
+  .kd-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; max-width: 520px; }
+
+  .kd-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 2px; vertical-align: 1px; }
+  .kd-dot.urgent { background: var(--text-danger); }
+  .kd-dot.soon { background: var(--text-warning); }
+  .kd-dot.open { background: var(--text-success); }
+  .kd-dot.closed { background: var(--text-muted); }
+
+  @media (max-width: 500px) {
+    .kd-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .kd-left { flex-direction: row; align-items: baseline; gap: 6px; }
+    .kd-unit { margin-top: 0; }
+  }
+</style>
+
+<div class="kd-wrap">
+  <h2 class="sr-only">Key conference dates and deadlines</h2>
+  <p class="kd-eyebrow">Important Dates</p>
+  <h2 class="kd-heading">Key Deadlines</h2>
+  <p class="kd-sub">Mark your calendar — these dates shape your path to the conference.</p>
+
+  <div class="kd-grid" id="kdGrid"></div>
+</div>
+
+<script>
+const dates = [
+  {
+    date: new Date('2026-10-02'),
+    title: 'Call for Papers — abstract deadline',
+    desc: 'Last day to submit abstract proposals. The committee will evaluate submissions over the following six weeks, with decisions communicated by mid-November.',
+    id: 'papers'
+  },
+  {
+    date: new Date('2026-12-21'),
+    title: 'Early bird registration closes',
+    desc: 'Last day for reduced-rate registration — just before the Christmas break. Securing your place early signals your commitment to attend.',
+    id: 'earlybird'
+  },
+  {
+    date: new Date('2027-02-08'),
+    title: 'Registration deadline',
+    desc: 'Final day to register for any conference event. This gives administrators and management two full weeks to prepare before the conference begins.',
+    id: 'register'
+  }
+];
+
+function daysUntil(target) {
+  const now = new Date();
+  now.setHours(0,0,0,0);
+  const t = new Date(target);
+  t.setHours(0,0,0,0);
+  return Math.round((t - now) / 86400000);
+}
+
+function badge(days) {
+  if (days < 0) return ['closed', 'Closed'];
+  if (days <= 30) return ['urgent', 'Closing soon'];
+  if (days <= 90) return ['soon', 'Coming up'];
+  return ['open', 'Open'];
+}
+
+function fmt(d) {
+  return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+const grid = document.getElementById('kdGrid');
+
+dates.forEach(item => {
+  const days = daysUntil(item.date);
+  const [cls, label] = badge(days);
+
+  const el = document.createElement('div');
+  el.className = 'kd-item';
+
+  const leftHTML = days < 0
+    ? `<div class="kd-past">Passed</div>`
+    : `<div class="kd-countdown">${days}</div><div class="kd-unit">days left</div>`;
+
+  el.innerHTML = `
+    <div class="kd-left">${leftHTML}</div>
+    <div class="kd-right">
+      <span class="kd-badge ${cls}"><span class="kd-dot ${cls}"></span>${label}</span>
+      <div class="kd-date">${fmt(item.date)}</div>
+      <div class="kd-title">${item.title}</div>
+      <div class="kd-desc">${item.desc}</div>
+    </div>
+  `;
+  grid.appendChild(el);
+});
+</script>
+
+  </div>
+</section>
+  
 <section id="register">
   <div class="wrap">
     <div class="sec-head reveal"><span class="label">Registration Open</span><h2>Reserve your place for the Conference.</h2>
