@@ -1832,6 +1832,142 @@ As Founder of Matkel and an educator and practitioner with deep roots in Indigen
       <a class="btn btn-ghost" href="mailto:a.sagoepaapa@opus.org.uk?subject=Scholarship%20Enquiry%20%E2%80%94%20Ghana%202027">Scholarship enquiry</a>
     </div>
   </div>
+  
+<section id="dates">
+  <div class="wrap">
+    <!-- paste full code here -->  
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.kd{padding:5rem 1.5rem;font-family:var(--font-sans);text-align:center}
+.kd-top{max-width:560px;margin:0 auto 4rem}
+.kd-eye{display:inline-flex;align-items:center;gap:12px;font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text-accent);margin-bottom:1.2rem}
+.kd-eye::before,.kd-eye::after{content:'';width:40px;height:0.5px;background:var(--border-accent)}
+.kd-h{font-family:var(--font-voice);font-size:clamp(2rem,5vw,3rem);font-weight:500;color:var(--text-primary);line-height:1.12;margin-bottom:.75rem}
+.kd-sub{font-size:14px;color:var(--text-secondary);line-height:1.8}
+
+.kd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;max-width:860px;margin:0 auto 3.5rem;background:var(--border);border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+
+.kdc{background:var(--surface-2);padding:2rem 1.5rem;text-align:left;display:flex;flex-direction:column;gap:.85rem;transition:background .15s}
+.kdc:hover{background:var(--surface-1)}
+.kdc-top{display:flex;justify-content:space-between;align-items:flex-start}
+.kdc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ic-teal{background:#E1F5EE;color:#0F6E56}
+.ic-amber{background:#FAEEDA;color:#854F0B}
+.ic-blue{background:#E6F1FB;color:#185FA5}
+.kdc-num{font-family:var(--font-voice);font-size:2.6rem;font-weight:500;color:var(--text-primary);line-height:1}
+.kdc-unit{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-top:2px}
+.kdc-passed{font-size:12px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;padding-top:6px}
+.kdc-divider{height:0.5px;background:var(--border)}
+.kdc-pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.p-teal{background:#E1F5EE;color:#085041}
+.p-amber{background:#FAEEDA;color:#633806}
+.p-blue{background:#E6F1FB;color:#0C447C}
+.p-gray{background:var(--surface-1);color:var(--text-muted);border:0.5px solid var(--border)}
+.kdc-date{font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
+.kdc-name{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.35}
+.kdc-desc{font-size:12px;color:var(--text-secondary);line-height:1.7}
+
+.kd-live{max-width:540px;margin:0 auto;border:0.5px solid var(--border);border-radius:16px;overflow:hidden}
+.kd-live-head{padding:1rem 1.5rem;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
+.kd-live-title{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.kd-live-for{font-size:12px;color:var(--text-secondary);text-align:center;padding:.75rem 1.5rem .25rem}
+.kd-ticker{display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:1rem 1.5rem 1.5rem}
+.kd-tb{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;max-width:80px}
+.kd-tn{font-family:var(--font-voice);font-size:2rem;font-weight:500;color:var(--text-primary);background:var(--surface-1);border:0.5px solid var(--border);border-radius:10px;width:100%;text-align:center;padding:8px 4px;line-height:1}
+.kd-tu{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)}
+.kd-sep{font-size:1.4rem;color:var(--border-strong);padding-bottom:22px;font-weight:300}
+
+@media(max-width:620px){
+  .kd-cards{grid-template-columns:1fr}
+  .kd-ticker{gap:4px}
+  .kd-tn{font-size:1.6rem}
+}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Conference key deadlines with live countdown</h2>
+
+<div class="kd">
+  <div class="kd-top">
+    <div class="kd-eye">Mark your calendar</div>
+    <h2 class="kd-h">Key Deadlines</h2>
+    <p class="kd-sub">Three dates that shape your journey to the conference. Each one closes a door — plan ahead.</p>
+  </div>
+
+  <div class="kd-cards" id="kdCards"></div>
+
+  <div class="kd-live">
+    <div class="kd-live-head">
+      <i class="ti ti-clock" style="font-size:14px;color:var(--text-muted)" aria-hidden="true"></i>
+      <span class="kd-live-title">Live countdown</span>
+    </div>
+    <div class="kd-live-for" id="liveFor"> </div>
+    <div class="kd-ticker">
+      <div class="kd-tb"><div class="kd-tn" id="cd">00</div><div class="kd-tu">days</div></div>
+      <div class="kd-sep">:</div>
+      <div class="kd-tb"><div class="kd-tn" id="ch">00</div><div class="kd-tu">hours</div></div>
+      <div class="kd-sep">:</div>
+      <div class="kd-tb"><div class="kd-tn" id="cm">00</div><div class="kd-tu">mins</div></div>
+      <div class="kd-sep">:</div>
+      <div class="kd-tb"><div class="kd-tn" id="cs">00</div><div class="kd-tu">secs</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const items=[
+  {date:new Date('2026-10-02T23:59:59'),name:'Abstract submission deadline',short:'Call for Papers',desc:'Last day to submit your abstract proposal. The committee evaluates all submissions and responds by mid-November.',icon:'ti-file-text',ic:'ic-teal',pill:'p-teal',plabel:'Open now'},
+  {date:new Date('2026-12-21T23:59:59'),name:'Early bird registration closes',short:'Early Bird',desc:'Reduced-rate registration ends just before the Christmas break. Commit before the holidays.',icon:'ti-tag',ic:'ic-amber',pill:'p-amber',plabel:'Coming up'},
+  {date:new Date('2027-02-08T23:59:59'),name:'Final registration deadline',short:'Registration',desc:'Last day to register for any conference event — two weeks before the conference begins.',icon:'ti-calendar-check',ic:'ic-blue',pill:'p-blue',plabel:'Registration'}
+];
+
+function pad(n){return String(Math.floor(n)).padStart(2,'0')}
+function daysLeft(d){const n=new Date();n.setHours(0,0,0,0);const t=new Date(d);t.setHours(0,0,0,0);return Math.round((t-n)/86400000)}
+function fmt(d){return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
+function fmtDay(d){return d.toLocaleDateString('en-GB',{weekday:'long'})}
+
+const grid=document.getElementById('kdCards');
+items.forEach(item=>{
+  const days=daysLeft(item.date);
+  const passed=days<0;
+  const pillCls=passed?'p-gray':item.pill;
+  const pillLbl=passed?'Closed':item.plabel;
+  const numHtml=passed
+    ?`<div class="kdc-passed">Deadline passed</div>`
+    :`<div class="kdc-num">${days}</div><div class="kdc-unit">days left</div>`;
+  const el=document.createElement('div');
+  el.className='kdc';
+  el.innerHTML=`
+    <div class="kdc-top">
+      <div class="kdc-icon ${item.ic}"><i class="ti ${item.icon}" style="font-size:18px" aria-hidden="true"></i></div>
+      <span class="kdc-pill ${pillCls}">${pillLbl}</span>
+    </div>
+    ${numHtml}
+    <div class="kdc-divider"></div>
+    <div class="kdc-date"><i class="ti ti-calendar" style="font-size:12px" aria-hidden="true"></i>${fmtDay(item.date)}, ${fmt(item.date)}</div>
+    <div class="kdc-name">${item.name}</div>
+    <div class="kdc-desc">${item.desc}</div>`;
+  grid.appendChild(el);
+});
+
+const next=items.filter(d=>d.date>new Date()).sort((a,b)=>a.date-b.date)[0];
+if(next){
+  document.getElementById('liveFor').textContent='Next deadline — '+next.short;
+  function tick(){
+    const diff=next.date-new Date();
+    if(diff<=0){document.getElementById('liveFor').textContent='Deadline has passed';return}
+    document.getElementById('cd').textContent=pad(diff/86400000);
+    document.getElementById('ch').textContent=pad((diff%86400000)/3600000);
+    document.getElementById('cm').textContent=pad((diff%3600000)/60000);
+    document.getElementById('cs').textContent=pad((diff%60000)/1000);
+  }
+  tick();setInterval(tick,1000);
+}else{
+  document.getElementById('liveFor').textContent='All deadlines have passed';
+}
+</script>
+  </div>
+</section>
+  
 </section>
   
 <section id="register">
