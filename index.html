@@ -2035,31 +2035,35 @@ if(next){
         <p class="note">For your security we never collect card or bank details on this form. Payment instructions are emailed after you register.</p>
       </div>
 
-      <div class="form-card reveal">
-        <form id="regForm" novalidate>
-          <div class="fgrid2">
-            <div class="field"><label>First name <span class="req">*</span></label><input name="firstName" required></div>
-            <div class="field"><label>Last name <span class="req">*</span></label><input name="lastName" required></div>
-            <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
-            <div class="field"><label>Phone</label><input name="phone" placeholder="+233…"></div>
-            <div class="field"><label>Country <span class="req">*</span></label><input name="country" required></div>
-            <div class="field"><label>Organisation / Affiliation</label><input name="organisation"></div>
-            <div class="field full"><label>Registration category <span class="req">*</span></label>
-              <select name="category" required>
-                <option value="">Select a category…</option>
-                <option>International Participant</option>
-                <option>African Participant</option>
-                <option>Student</option>
-                <option>GRC Participant</option>
-                <option>Academic Conference Only</option>
-              </select></div>
-            <div class="field full"><label>Access needs</label><textarea name="needs" placeholder="Optional"></textarea></div>
-            <div class="field full"><label class="check"><input type="checkbox" name="grc" value="yes"><span>I am interested in the Group Relations Conference (25–28 Feb)</span></label></div>
-          </div>
-          <div class="err" id="formErr"></div>
-          <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">Complete Registration</button>
-          <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>
-        </form>
+  <form id="regForm" novalidate>
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+  <input type="hidden" name="subject" value="Ghana 2027 Registration">
+  <input type="hidden" name="from_name" value="Ghana 2027 Registration Form">
+  <input type="hidden" name="cc" value="damensah@ug.edu.gh,a.sagoepaapa@opus.org.uk">
+
+  <div class="fgrid2">
+    <div class="field"><label>First name <span class="req">*</span></label><input name="firstName" required></div>
+    <div class="field"><label>Last name <span class="req">*</span></label><input name="lastName" required></div>
+    <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+    <div class="field"><label>Phone</label><input name="phone" placeholder="+233…"></div>
+    <div class="field"><label>Country <span class="req">*</span></label><input name="country" required></div>
+    <div class="field"><label>Organisation / Affiliation</label><input name="organisation"></div>
+    <div class="field full"><label>Registration category <span class="req">*</span></label>
+      <select name="category" required>
+        <option value="">Select a category…</option>
+        <option>International Participant</option>
+        <option>African Participant</option>
+        <option>Student</option>
+        <option>GRC Participant</option>
+        <option>Academic Conference Only</option>
+      </select></div>
+    <div class="field full"><label>Access needs</label><textarea name="needs" placeholder="Optional"></textarea></div>
+    <div class="field full"><label class="check"><input type="checkbox" name="grc" value="yes"><span>I am interested in the Group Relations Conference (25–28 Feb)</span></label></div>
+  </div>
+  <div class="err" id="formErr"></div>
+  <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">Complete Registration</button>
+  <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>
+</form>
 
         <div class="confirm" id="confirm" style="display:none">
           <div class="tick">✓</div>
@@ -2144,77 +2148,46 @@ if(next){
 </footer>
 
 <script>
-const root=document.documentElement,tb=document.getElementById('themeBtn');
-tb.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');tb.textContent=d?'☾':'☀';};
-const mm=document.getElementById('mobileMenu');
-document.getElementById('burger').onclick=()=>mm.classList.add('open');
-document.getElementById('closeMenu').onclick=()=>mm.classList.remove('open');
-mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.08)+'s';io.observe(el);});
-
-const target=new Date('2027-02-21T09:00:00Z').getTime();
-function tick(){const x=target-Date.now();if(x<0)return;
- const d=Math.floor(x/864e5),h=Math.floor(x%864e5/36e5),m=Math.floor(x%36e5/6e4),s=Math.floor(x%6e4/1e3);
- document.getElementById('d').textContent=d;document.getElementById('h').textContent=String(h).padStart(2,'0');
- document.getElementById('m').textContent=String(m).padStart(2,'0');document.getElementById('s').textContent=String(s).padStart(2,'0');}
-tick();setInterval(tick,1000);
-
 const form=document.getElementById('regForm'),errBox=document.getElementById('formErr'),
-      btn=document.getElementById('submitBtn'),ORG_EMAIL='a.sagoepaapa@opus.org.uk,damensah@ug.edu.gh';
-form.addEventListener('submit',async e=>{
-  e.preventDefault();errBox.style.display='none';
-  const fd=new FormData(form),get=k=>(fd.get(k)||'').toString().trim();
+      btn=document.getElementById('submitBtn');
+const TICKET_TAILOR_URL='https://www.tickettailor.com/events/opusanorganisationpromotingunderstandingofsociety/2337181';
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  errBox.style.display='none';
+
+  const fd=new FormData(form), get=k=>(fd.get(k)||'').toString().trim();
   const required=['firstName','lastName','email','country','category'];
-  for(const k of required){if(!get(k)){return showErr('Please complete all required fields (*).');}}
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email')))return showErr('Please enter a valid email address.');
-  btn.disabled=true;btn.textContent='Sending…';
+  for(const k of required){
+    if(!get(k)) return showErr('Please complete all required fields (*).');
+  }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email')))
+    return showErr('Please enter a valid email address.');
+
+  btn.disabled=true; btn.textContent='Submitting…';
+
   try{
-    const res=await fetch('register.php',{method:'POST',body:fd});
-    if(!res.ok)throw new Error('bad');
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:fd
+    });
     const j=await res.json();
-    if(!j.ok)throw new Error('mail');
-    succeed(j.ref);
+    if(!j.success) throw new Error(j.message||'Submission failed');
+
+    // success — redirect to Ticket Tailor
+    window.location.href = TICKET_TAILOR_URL;
   }catch(err){
-    const ref='GH27-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,8).toUpperCase();
-    const body=`Reference: ${ref}%0AName: ${get('firstName')} ${get('lastName')}%0AEmail: ${get('email')}%0APhone: ${get('phone')}%0ACountry: ${get('country')}%0AOrganisation: ${get('organisation')}%0ACategory: ${get('category')}%0AGRC: ${get('grc')?'Yes':'No'}%0ANeeds: ${get('needs')}`;
-    const mailto=`mailto:${ORG_EMAIL}?subject=${encodeURIComponent('Ghana 2027 Registration '+ref)}&body=${body}`;
-    succeed(ref,mailto);
+    showErr('Something went wrong: ' + err.message + '. Please try again or contact us directly.');
   }
 });
-function showErr(m){errBox.textContent=m;errBox.style.display='block';btn.disabled=false;btn.textContent='Complete Registration';}
-function succeed(ref,mailto){
-  form.style.display='none';
-  document.getElementById('refOut').textContent=ref;
-  document.getElementById('confirm').style.display='block';
-  if(mailto){const b=document.getElementById('demoBox');b.style.display='block';
-    b.innerHTML='Email backend (register.php) not detected on this host. '+
-    '<a href="'+mailto+'" style="color:var(--bronze);font-weight:600">Click here to send your details by email →</a> '+
-    'Once register.php is live on your server, confirmations send automatically.';}
+
+function showErr(m){
+  errBox.textContent=m;
+  errBox.style.display='block';
+  btn.disabled=false;
+  btn.textContent='Complete Registration';
 }
-/* ---- Motion: progress bar, parallax, 3D tilt, directional reveals ---- */
-(function(){
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  // assign reveal directions/variants without touching markup
-  document.querySelectorAll('.split').forEach(s=>{const k=s.children;
-    if(k[0])k[0].setAttribute('data-anim','left');if(k[1])k[1].setAttribute('data-anim','right');});
-  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>c.setAttribute('data-anim','scale'));
-  // scroll progress + band parallax
-  const bar=document.createElement('div');bar.className='scroll-prog';document.body.appendChild(bar);
-  const band=document.querySelector('.band');
-  function onScroll(){const h=document.documentElement;
-    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-    if(band){const r=band.getBoundingClientRect();band.style.backgroundPositionY=(50+(r.top/innerHeight)*-14)+'%';}
-  }
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-  // 3D tilt on cards (pointer-driven)
-  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>{
-    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
-      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-      c.style.transform='perspective(900px) rotateX('+(-py*6).toFixed(2)+'deg) rotateY('+(px*8).toFixed(2)+'deg) translateY(-6px)';});
-    c.addEventListener('mouseleave',()=>{c.style.transform='';});
-  });
-})();
 </script>
   <script>
   document.addEventListener('keydown', e => {
