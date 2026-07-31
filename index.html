@@ -2148,6 +2148,22 @@ if(next){
 </footer>
 
 <script>
+  const root=document.documentElement,tb=document.getElementById('themeBtn');
+tb.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');tb.textContent=d?'☾':'☀';};
+const mm=document.getElementById('mobileMenu');
+document.getElementById('burger').onclick=()=>mm.classList.add('open');
+document.getElementById('closeMenu').onclick=()=>mm.classList.remove('open');
+mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.08)+'s';io.observe(el);});
+
+const target=new Date('2027-02-21T09:00:00Z').getTime();
+function tick(){const x=target-Date.now();if(x<0)return;
+ const d=Math.floor(x/864e5),h=Math.floor(x%864e5/36e5),m=Math.floor(x%36e5/6e4),s=Math.floor(x%6e4/1e3);
+ document.getElementById('d').textContent=d;document.getElementById('h').textContent=String(h).padStart(2,'0');
+ document.getElementById('m').textContent=String(m).padStart(2,'0');document.getElementById('s').textContent=String(s).padStart(2,'0');}
+tick();setInterval(tick,1000);
+  
 const form=document.getElementById('regForm'),errBox=document.getElementById('formErr'),
       btn=document.getElementById('submitBtn');
 const TICKET_TAILOR_URL='https://www.tickettailor.com/events/opusanorganisationpromotingunderstandingofsociety/2337181';
