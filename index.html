@@ -2196,6 +2196,29 @@ function showErr(m){
         .forEach(el => el.classList.remove('open'));
     }
   });
+/* ---- Motion: progress bar, parallax, 3D tilt, directional reveals ---- */
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  // assign reveal directions/variants without touching markup
+  document.querySelectorAll('.split').forEach(s=>{const k=s.children;
+    if(k[0])k[0].setAttribute('data-anim','left');if(k[1])k[1].setAttribute('data-anim','right');});
+  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>c.setAttribute('data-anim','scale'));
+  // scroll progress + band parallax
+  const bar=document.createElement('div');bar.className='scroll-prog';document.body.appendChild(bar);
+  const band=document.querySelector('.band');
+  function onScroll(){const h=document.documentElement;
+    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+    if(band){const r=band.getBoundingClientRect();band.style.backgroundPositionY=(50+(r.top/innerHeight)*-14)+'%';}
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  // 3D tilt on cards (pointer-driven)
+  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>{
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      c.style.transform='perspective(900px) rotateX('+(-py*6).toFixed(2)+'deg) rotateY('+(px*8).toFixed(2)+'deg) translateY(-6px)';});
+    c.addEventListener('mouseleave',()=>{c.style.transform='';});
+  });
+})(); 
 </script>
 </body>
 </html>
