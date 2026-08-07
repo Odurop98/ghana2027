@@ -2255,7 +2255,6 @@ const promoField=document.getElementById('promoCodeField');
 function openModal(){backdrop.classList.add('open');}
 function closeModal(){backdrop.classList.remove('open');}
 
-window.addEventListener('load',()=>setTimeout(openModal,400));
 closeBtn.onclick=closeModal;
 backdrop.onclick=e=>{if(e.target===backdrop)closeModal();};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
@@ -2263,10 +2262,9 @@ copyBtn.onclick=async()=>{
   try{await navigator.clipboard.writeText(CODE);copiedMsg.textContent='Code copied to clipboard';}
   catch(err){copiedMsg.textContent='Code: '+CODE;}
 };
-applyBtn.onclick=()=>{promoField.value=CODE;closeModal();};
-skipBtn.onclick=closeModal;
 
-form.addEventListener('submit', async e => {
+// clicking the button no longer submits directly — it validates, then opens the popup
+form.addEventListener('submit', e => {
   e.preventDefault();
   errBox.style.display='none';
 
@@ -2278,9 +2276,17 @@ form.addEventListener('submit', async e => {
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(get('email')))
     return showErr('Please enter a valid email address.');
 
+  openModal();
+});
+
+applyBtn.onclick=()=>{ promoField.value=CODE; closeModal(); doSubmit(); };
+skipBtn.onclick=()=>{ closeModal(); doSubmit(); };
+
+async function doSubmit(){
   btn.disabled=true; btn.textContent='Submitting…';
 
   try{
+    const fd=new FormData(form);
     const res=await fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Accept':'application/json'},
@@ -2296,7 +2302,7 @@ form.addEventListener('submit', async e => {
   }catch(err){
     showErr('Something went wrong: ' + err.message + '. Please try again or contact us directly.');
   }
-});
+}
 
 function showErr(m){
   errBox.textContent=m;
