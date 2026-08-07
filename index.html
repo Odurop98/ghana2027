@@ -576,6 +576,77 @@ footer a:hover{color:var(--gold-2)}
 .nav-sponsor:hover {
   background: rgba(184, 134, 11, 0.1);
 }
+  .modal-backdrop{
+  position:fixed; inset:0; background:rgba(8,42,32,0.55);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px; z-index:1000;
+  opacity:0; pointer-events:none;
+  transition:opacity .25s ease;
+}
+.modal-backdrop.open{opacity:1; pointer-events:auto;}
+
+.modal{
+  position:relative; width:100%; max-width:420px;
+  background:#FBF8F1; border-radius:16px;
+  padding:32px 28px 28px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  transform:translateY(14px) scale(.98);
+  transition:transform .28s ease;
+  text-align:center; overflow:hidden;
+}
+.modal-backdrop.open .modal{transform:translateY(0) scale(1);}
+
+.modal::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:8px;
+  background: repeating-linear-gradient(90deg,
+    #0B3D2E 0 24px, #D4AF37 24px 34px, #A6192E 34px 40px, #0B3D2E 40px 64px);
+}
+
+.modal-close{
+  position:absolute; top:14px; right:14px;
+  width:30px; height:30px; border-radius:50%;
+  border:1px solid rgba(20,19,17,0.12); background:#fff;
+  font-size:16px; line-height:1; cursor:pointer; color:#141311;
+}
+.modal-close:hover{background:#FBF8F1;}
+
+.badge{
+  display:inline-block; margin:6px 0 14px;
+  font-size:12px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:#A6192E;
+  border:1px solid #A6192E; border-radius:999px; padding:5px 12px;
+}
+.modal h2{font-size:26px; color:#0B3D2E; font-weight:700; margin:0; font-family:inherit;}
+.modal .pct{color:#A6192E;}
+.modal p{color:#4a463f; font-size:14.5px; margin:12px 0 0;}
+
+.code-row{
+  margin:20px 0 6px; display:flex; align-items:stretch;
+  border:2px dashed #D4AF37; border-radius:10px;
+  overflow:hidden; background:#fff;
+}
+.code-row .code{
+  flex:1; padding:12px 14px; font-weight:700; font-size:20px;
+  letter-spacing:.08em; color:#0B3D2E;
+}
+.code-row button{
+  border:none; background:#0B3D2E; color:#fff;
+  font-weight:600; font-size:13px; padding:0 16px; cursor:pointer;
+}
+.code-row button:hover{background:#082A20;}
+.copied-msg{font-size:12.5px; color:#0B3D2E; font-weight:600; min-height:16px; margin-top:6px;}
+
+.modal-actions{margin-top:20px; display:flex; flex-direction:column; gap:10px;}
+.btn-outline{
+  background:transparent; color:#0B3D2E;
+  border:1px solid rgba(20,19,17,0.12); font-weight:600; font-size:13.5px;
+  padding:10px 16px; border-radius:9px; cursor:pointer;
+}
+.btn-outline:hover{background:#fff;}
+
+@media (prefers-reduced-motion: reduce){
+  .modal-backdrop, .modal{transition:none;}
+}
 } 
 </style>
 <script>
@@ -2036,6 +2107,7 @@ if(next){
       </div>
 
   <form id="regForm" novalidate>
+  <input type="hidden" name="promoCode" id="promoCodeField" value="">
   <input type="hidden" name="access_key" value="6b76d822-3da8-4ff4-bdab-fb8123093a4e">
   <input type="hidden" name="subject" value="Ghana 2027 Registration">
   <input type="hidden" name="from_name" value="Ghana 2027 Registration Form">
@@ -2063,8 +2135,27 @@ if(next){
   <div class="err" id="formErr"></div>
   <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">Complete Registration <br>Pay Now</br></button>
   <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>
+    
 </form>
+<div class="modal-backdrop" id="earlyBirdBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="earlyBirdTitle">
+    <button class="modal-close" id="earlyBirdClose" aria-label="Close">✕</button>
+    <span class="badge">Limited time</span>
+    <h2 id="earlyBirdTitle">Early Bird — <span class="pct">20% off</span></h2>
+    <p>Register now and save 20% on Ghana 2027. Apply the code below before you complete your registration.</p>
 
+    <div class="code-row">
+      <div class="code" id="promoCodeDisplay">GHANA</div>
+      <button type="button" id="copyCodeBtn">Copy</button>
+    </div>
+    <div class="copied-msg" id="copiedMsg"></div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-gold" id="applyCodeBtn">Apply code &amp; continue</button>
+      <button type="button" class="btn btn-outline" id="skipCodeBtn">Continue without code</button>
+    </div>
+  </div>
+</div>
         <div class="confirm" id="confirm" style="display:none">
           <div class="tick">✓</div>
           <h3>Registration received</h3>
@@ -2148,25 +2239,32 @@ if(next){
 </footer>
 
 <script>
-  const root=document.documentElement,tb=document.getElementById('themeBtn');
-tb.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');tb.textContent=d?'☾':'☀';};
-const mm=document.getElementById('mobileMenu');
-document.getElementById('burger').onclick=()=>mm.classList.add('open');
-document.getElementById('closeMenu').onclick=()=>mm.classList.remove('open');
-mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.08)+'s';io.observe(el);});
-
-const target=new Date('2027-02-21T09:00:00Z').getTime();
-function tick(){const x=target-Date.now();if(x<0)return;
- const d=Math.floor(x/864e5),h=Math.floor(x%864e5/36e5),m=Math.floor(x%36e5/6e4),s=Math.floor(x%6e4/1e3);
- document.getElementById('d').textContent=d;document.getElementById('h').textContent=String(h).padStart(2,'0');
- document.getElementById('m').textContent=String(m).padStart(2,'0');document.getElementById('s').textContent=String(s).padStart(2,'0');}
-tick();setInterval(tick,1000);
-  
 const form=document.getElementById('regForm'),errBox=document.getElementById('formErr'),
       btn=document.getElementById('submitBtn');
 const TICKET_TAILOR_URL='https://www.tickettailor.com/events/opusanorganisationpromotingunderstandingofsociety/2337181';
+
+const CODE='GHANA';
+const backdrop=document.getElementById('earlyBirdBackdrop');
+const closeBtn=document.getElementById('earlyBirdClose');
+const copyBtn=document.getElementById('copyCodeBtn');
+const copiedMsg=document.getElementById('copiedMsg');
+const applyBtn=document.getElementById('applyCodeBtn');
+const skipBtn=document.getElementById('skipCodeBtn');
+const promoField=document.getElementById('promoCodeField');
+
+function openModal(){backdrop.classList.add('open');}
+function closeModal(){backdrop.classList.remove('open');}
+
+window.addEventListener('load',()=>setTimeout(openModal,400));
+closeBtn.onclick=closeModal;
+backdrop.onclick=e=>{if(e.target===backdrop)closeModal();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+copyBtn.onclick=async()=>{
+  try{await navigator.clipboard.writeText(CODE);copiedMsg.textContent='Code copied to clipboard';}
+  catch(err){copiedMsg.textContent='Code: '+CODE;}
+};
+applyBtn.onclick=()=>{promoField.value=CODE;closeModal();};
+skipBtn.onclick=closeModal;
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -2191,7 +2289,9 @@ form.addEventListener('submit', async e => {
     const j=await res.json();
     if(!j.success) throw new Error(j.message||'Submission failed');
 
-    // success — redirect to Ticket Tailor
+    if(promoField.value){
+      alert('Registration received! On the next page, paste your code "'+promoField.value+'" into the discount box at checkout to get your 20% off.');
+    }
     window.location.href = TICKET_TAILOR_URL;
   }catch(err){
     showErr('Something went wrong: ' + err.message + '. Please try again or contact us directly.');
@@ -2204,37 +2304,6 @@ function showErr(m){
   btn.disabled=false;
   btn.textContent='Complete Registration';
 }
-</script>
-  <script>
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.bio-overlay.open')
-        .forEach(el => el.classList.remove('open'));
-    }
-  });
-/* ---- Motion: progress bar, parallax, 3D tilt, directional reveals ---- */
-(function(){
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  // assign reveal directions/variants without touching markup
-  document.querySelectorAll('.split').forEach(s=>{const k=s.children;
-    if(k[0])k[0].setAttribute('data-anim','left');if(k[1])k[1].setAttribute('data-anim','right');});
-  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>c.setAttribute('data-anim','scale'));
-  // scroll progress + band parallax
-  const bar=document.createElement('div');bar.className='scroll-prog';document.body.appendChild(bar);
-  const band=document.querySelector('.band');
-  function onScroll(){const h=document.documentElement;
-    bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
-    if(band){const r=band.getBoundingClientRect();band.style.backgroundPositionY=(50+(r.top/innerHeight)*-14)+'%';}
-  }
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-  // 3D tilt on cards (pointer-driven)
-  document.querySelectorAll('.ccard,.scard,.partner').forEach(c=>{
-    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();
-      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
-      c.style.transform='perspective(900px) rotateX('+(-py*6).toFixed(2)+'deg) rotateY('+(px*8).toFixed(2)+'deg) translateY(-6px)';});
-    c.addEventListener('mouseleave',()=>{c.style.transform='';});
-  });
-})(); 
 </script>
 </body>
 </html>
