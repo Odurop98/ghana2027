@@ -21,6 +21,23 @@
     --muted: #6B4C30;
   }
 
+  .btn-donate {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #C9A227, #A9821A);
+  color: #12213F;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #A9821A;
+}
+.btn-donate:hover {
+  background: linear-gradient(135deg, #D9B233, #C9A227);
+}
+
   body {
     background: var(--cream);
     color: var(--text);
@@ -393,6 +410,12 @@
     <div class="cta-buttons">
       <a href="#" class="btn-primary" onclick="document.getElementById('pdf-preview-modal').style.display='flex'; return false;">Download Package</a>
       <a href="mailto:a.sagoepaapa@opus.org.uk,damensah@ug.edu.gh" class="btn-outline">Contact Our Team</a>
+      <a href="https://buy.stripe.com/aFa14o1q07aa3Z4clM97G0w" 
+   class="btn-donate" 
+   target="_blank" 
+   rel="noopener">
+  Support with a Donation
+</a>
 </div>
 
 <div id="pdf-preview-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
