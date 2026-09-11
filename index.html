@@ -2112,7 +2112,6 @@ if(next){
   <input type="hidden" name="access_key" value="6b76d822-3da8-4ff4-bdab-fb8123093a4e">
   <input type="hidden" name="subject" value="Ghana 2027 Registration">
   <input type="hidden" name="from_name" value="Ghana 2027 Registration Form">
-  <input type="hidden" name="ccemail" value="damensah@ug.edu.gh; a.sagoepaapa@opus.org.uk">
 
   <div class="fgrid2">
     <div class="field"><label>First name <span class="req">*</span></label><input name="firstName" required></div>
@@ -2135,7 +2134,7 @@ if(next){
   </div>
   <div class="err" id="formErr"></div>
   <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">Complete Registration <br>Pay Now</br></button>
-  <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>  
+  <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>
 </form>
 
 <div class="modal-backdrop" id="earlyBirdBackdrop">
@@ -2323,7 +2322,6 @@ async function doSubmit(){
     const j=await res.json();
     if(!j.success) throw new Error(j.message||'Submission failed');
 
-    // fill and reveal the confirmation card instead of redirecting immediately
     document.getElementById('refOut').textContent = ref;
     form.style.display = 'none';
     const confirmBox = document.getElementById('confirm');
