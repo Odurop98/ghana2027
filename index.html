@@ -2311,21 +2311,26 @@ async function doSubmit(){
 
   form.querySelector('input[name="subject"]').value = 'Ghana 2027 Registration — ' + ref;
 
-  try{
-    const fd=new FormData(form);
+  const KEY_A = '6b76d822-3da8-4ff4-bdab-fb8123093a4e';   // existing form
+  const KEY_B = 'fa9eb079-3b43-4791-b037-dc03be61cc83';            // new form -> damensah@ug.edu.gh
+
+  function payload(key){
+    const fd = new FormData(form);
+    fd.set('access_key', key);
     fd.append('reference', ref);
-    const res=await fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Accept':'application/json'},
-      body:fd
-    });
-    const j=await res.json();
-    if(!j.success) throw new Error(j.message||'Submission failed');
+    return fetch('https://api.web3forms.com/submit',{
+      method:'POST', headers:{'Accept':'application/json'}, body:fd
+    }).then(r=>r.json());
+  }
+
+  try{
+    const [a,b] = await Promise.allSettled([payload(KEY_A), payload(KEY_B)]);
+    const ok = (a.status==='fulfilled' && a.value.success) || (b.status==='fulfilled' && b.value.success);
+    if(!ok) throw new Error('Submission failed');
 
     document.getElementById('refOut').textContent = ref;
     form.style.display = 'none';
-    const confirmBox = document.getElementById('confirm');
-    confirmBox.style.display = 'block';
+    document.getElementById('confirm').style.display = 'block';
 
     if(promoField.value){
       const demoBox = document.getElementById('demoBox');
@@ -2336,7 +2341,6 @@ async function doSubmit(){
     showErr('Something went wrong: ' + err.message + '. Please try again or contact us directly.');
   }
 }
-
 function showErr(m){
   errBox.textContent=m;
   errBox.style.display='block';
