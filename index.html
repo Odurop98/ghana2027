@@ -2107,12 +2107,12 @@ if(next){
         <p class="note">For your security we never collect card or bank details on this form. Payment instructions are emailed after you register.</p>
       </div>
 
-  <form id="regForm" novalidate>
+ <form id="regForm" novalidate>
   <input type="hidden" name="promoCode" id="promoCodeField" value="">
   <input type="hidden" name="access_key" value="6b76d822-3da8-4ff4-bdab-fb8123093a4e">
   <input type="hidden" name="subject" value="Ghana 2027 Registration">
   <input type="hidden" name="from_name" value="Ghana 2027 Registration Form">
-  <input type="hidden" name="cc" value="damensah@ug.edu.gh,a.sagoepaapa@opus.org.uk">
+  <input type="hidden" name="ccemail" value="damensah@ug.edu.gh; a.sagoepaapa@opus.org.uk">
 
   <div class="fgrid2">
     <div class="field"><label>First name <span class="req">*</span></label><input name="firstName" required></div>
@@ -2135,9 +2135,9 @@ if(next){
   </div>
   <div class="err" id="formErr"></div>
   <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">Complete Registration <br>Pay Now</br></button>
-  <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>
-    
+  <p class="note">By registering you agree to be contacted about Ghana 2027. We respect your privacy.</p>  
 </form>
+
 <div class="modal-backdrop" id="earlyBirdBackdrop">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="earlyBirdTitle">
     <button class="modal-close" id="earlyBirdClose" aria-label="Close">✕</button>
@@ -2157,12 +2157,17 @@ if(next){
     </div>
   </div>
 </div>
-        <div class="confirm" id="confirm" style="display:none">
-          <div class="tick">✓</div>
-          <h3>Registration received</h3>
-          <p style="color:var(--fg-soft)">A confirmation has been sent to your email with next steps.</p>
-          <div class="ref" id="refOut">GH27-…</div>
-          <div id="demoBox" class="demo" style="display:none"></div>
+
+<div class="confirm" id="confirm" style="display:none">
+  <div class="tick">✓</div>
+  <h3>Registration received</h3>
+  <p style="color:var(--fg-soft)">A confirmation has been sent to your email with next steps.</p>
+  <div class="ref" id="refOut">GH27-</div>
+  <div id="demoBox" class="demo" style="display:none"></div>
+  <a class="btn btn-gold btn-lg" id="continueBtn" href="https://www.tickettailor.com/events/opusanorganisationpromotingunderstandingofsociety/2337181">
+    Continue to Payment ↗
+  </a>
+</div>
         </div>
       </div>
     </div>
@@ -2302,8 +2307,14 @@ skipBtn.onclick=()=>{ closeModal(); doSubmit(); };
 async function doSubmit(){
   btn.disabled=true; btn.textContent='Submitting…';
 
+  const ref = 'GH27-' + new Date().toISOString().slice(2,10).replace(/-/g,'')
+              + '-' + Math.random().toString(36).slice(2,8).toUpperCase();
+
+  form.querySelector('input[name="subject"]').value = 'Ghana 2027 Registration — ' + ref;
+
   try{
     const fd=new FormData(form);
+    fd.append('reference', ref);
     const res=await fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Accept':'application/json'},
@@ -2312,10 +2323,17 @@ async function doSubmit(){
     const j=await res.json();
     if(!j.success) throw new Error(j.message||'Submission failed');
 
+    // fill and reveal the confirmation card instead of redirecting immediately
+    document.getElementById('refOut').textContent = ref;
+    form.style.display = 'none';
+    const confirmBox = document.getElementById('confirm');
+    confirmBox.style.display = 'block';
+
     if(promoField.value){
-      alert('Registration received! On the next page, paste your code "'+promoField.value+'" into the discount box at checkout to get your 20% off.');
+      const demoBox = document.getElementById('demoBox');
+      demoBox.textContent = 'Your code "'+promoField.value+'" has been noted — paste it into the discount box at checkout on the next page to get your 20% off.';
+      demoBox.style.display = 'block';
     }
-    window.location.href = TICKET_TAILOR_URL;
   }catch(err){
     showErr('Something went wrong: ' + err.message + '. Please try again or contact us directly.');
   }
